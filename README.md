@@ -15,8 +15,8 @@
               <td align='center'>Jihwan</td>
             </tr>
             <tr>
-              <td align='center'></td>
-              <td align='center'></td>
+              <td align='center'>UI & System & Setting</td>
+              <td align='center'>Player & NPC & Quest</td>
             </tr>
           </tr>
       </tbody>
@@ -25,7 +25,8 @@
   <h5>🛠️ Develop 🛠️</h5>
   <img src="https://img.shields.io/badge/Unity-000000?style=flat-square&logo=Unity&logoColor=Gray"/>
   <h5>🎨 Game Design 🎨</h5>
-  <br>
+
+  [Google Docs](https://docs.google.com/document/d/1vcU3PHRy5MtHsl22hlv8Nb3wCSTtbHL8wTB5Os1HQNw/edit)
   <br>
   <h4>Basic Design</h4>
 </div>
