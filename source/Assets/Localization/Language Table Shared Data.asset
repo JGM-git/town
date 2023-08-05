@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Language Table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Language Table
+  m_TableCollectionNameGuidString: 25974fd66528dc944b59a68d838cdce0
+  m_Entries:
+  - m_Id: 19514753024
+    m_Key: Sunny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131750133760
+    m_Key: Rainy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 189254041600
+    m_Key: Hot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 235831787520
+    m_Key: Cold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265057697792
+    m_Key: Foggy
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4694507948590497816
+  references:
+    version: 2
+    RefIds:
+    - rid: 4694507948590497816
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1691209144942
