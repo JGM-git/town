@@ -9,7 +9,7 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     /// <summary>
-    /// UI OBJECTS
+    ///////////////////////////////  UI OBJECTS
     /// </summary>
     [Header ("Money")]
     public TMP_Text MoneyText;
@@ -26,19 +26,19 @@ public class UIManager : MonoBehaviour
     public Button SettingButton;
 
     /// <summary>
-    /// VARIABLES
+    /// //////////////////////////// VARIABLES
     /// </summary>
     private MainSystem mainSystem;
     
     /// <summary>
-    /// VARIABLES FOR CALCULATING DATE
+    /// //////////////////////////// VARIABLES FOR CALCULATING DATE
     /// </summary>
     private static string[] monthNames = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     private static string[] dayNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     
 
     /// <summary>
-    /// EVENT FUNCTIONS
+    /// //////////////////////////// EVENT FUNCTIONS
     /// </summary>
     
     void Start()
@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// CUSTOM FUNCTIONS
+    /// //////////////////////////// CUSTOM FUNCTIONS
     /// </summary>
 
     public void RefreshMoney()
@@ -70,5 +70,9 @@ public class UIManager : MonoBehaviour
     {
         if(target >= 10) return target.ToString();
         return "0" + target.ToString();
+    }
+
+    public void RefreshWeather()
+    {
     }
 }

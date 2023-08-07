@@ -10,7 +10,8 @@ public class MainSystem : MonoBehaviour
         Rainy,
         Hot,
         Cold,
-        Foggy
+        Cloudy,
+        Snowy
     };
 
     [System.Serializable]
@@ -36,7 +37,7 @@ public class MainSystem : MonoBehaviour
     private UIManager ui;
 
     /// <summary>
-    /// EVENT FUNCTIONS
+    /// //////////////////////////// EVENT FUNCTIONS
     /// </summary>
 
     void Awake()
@@ -44,7 +45,7 @@ public class MainSystem : MonoBehaviour
         clock = new Clock {
             year = 2023,
             month = 8,
-            day = 1,
+            day = 7,
             hour = 12,
             minute = 0
         };
@@ -67,7 +68,7 @@ public class MainSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// TIME MANAGEMENT
+    /// //////////////////////////// TIME MANAGEMENT
     /// </summary>
 
     private void ManageClock()
