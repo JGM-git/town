@@ -13,11 +13,11 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     public void OnPointerEnter(PointerEventData e)
     {
-        transform.DOScale(Vector3.one * 1.5f, 0.3f);
+        transform.DOScale(1.3f, 0.3f);
     }
 
     public void OnPointerExit(PointerEventData e)
     {
-        transform.DOScale(Vector3.one, 0.3f);
+        transform.DOScale(1f, 0.3f);
     }
 }

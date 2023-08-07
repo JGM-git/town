@@ -17,18 +17,27 @@ public class UIManager : MonoBehaviour
     public TMP_Text TimeText;
     public TMP_Text DateText;
     public Image WeatherIcon;
-    [Header ("Menu")]
+    [Header ("Menu Buttons")]
     public Button InfoButton;
     public Button ShopButton;
     public Button QuestButton;
     public Button AchieveButton;
     public Button MapButton;
     public Button SettingButton;
+    [Header("Popup Windows")]
+    public GameObject InfoPanel;
 
     /// <summary>
     /// //////////////////////////// VARIABLES
     /// </summary>
     private MainSystem mainSystem;
+
+    public bool infoOpened = false;
+    public bool shopOpened = false;
+    public bool questOpened = false;
+    public bool achieveOpened = false;
+    public bool mapOpened = false;
+    public bool settingOpened = false;
     
     /// <summary>
     /// //////////////////////////// VARIABLES FOR CALCULATING DATE
@@ -74,5 +83,37 @@ public class UIManager : MonoBehaviour
 
     public void RefreshWeather()
     {
+    }
+
+    /// <summary>
+    /// //////////////////////////// BUTTON ONCLICK
+    /// </summary>
+
+    public void OpenInfo()
+    {
+        infoOpened = !infoOpened;
+        if(infoOpened) PanelOpenAnim(InfoPanel);
+        else PanelCloseAnim(InfoPanel);
+    }
+
+    private void PanelOpenAnim(GameObject target)
+    {
+        target.SetActive(true);
+        target.transform.localScale = Vector3.one * 0.1f;
+        var seq = DOTween.Sequence();
+        seq.Append(target.transform.DOScale(1.05f, 0.2f));
+        seq.Append(target.transform.DOScale(1f, 0.1f));
+        seq.Play();
+    }
+
+    private void PanelCloseAnim(GameObject target)
+    {
+        var seq = DOTween.Sequence();
+        seq.Append(target.transform.DOScale(1.05f, 0.1f));
+        seq.Append(target.transform.DOScale(0.1f, 0.1f));
+        seq.Play().OnComplete(() =>
+        {
+            target.SetActive(false);
+        });
     }
 }
