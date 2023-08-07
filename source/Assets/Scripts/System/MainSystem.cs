@@ -30,14 +30,16 @@ public class MainSystem : MonoBehaviour
     [Header ("System Variables")]
     public Weather currentWeather;
     public Clock clock;
+    public int money;
     [SerializeField]
     private float time = 0f;
+    private UIManager ui;
 
     /// <summary>
     /// EVENT FUNCTIONS
     /// </summary>
 
-    void Start()
+    void Awake()
     {
         clock = new Clock {
             year = 2023,
@@ -46,6 +48,12 @@ public class MainSystem : MonoBehaviour
             hour = 12,
             minute = 0
         };
+        money = 0;
+    }
+
+    void Start()
+    {
+        ui = FindObjectOfType<UIManager>();
     }
 
     void Update()
@@ -89,6 +97,8 @@ public class MainSystem : MonoBehaviour
             clock.year++;
             clock.month = 1;
         }
+
+        ui.RefreshTime();
     }
 
     private int GetLastDayOfMonth(int year, int month)
