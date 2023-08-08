@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     public Button SettingButton;
     [Header("Popup Windows")]
     public GameObject InfoPanel;
+    public GameObject QuestPanel;
+    public GameObject AchievePanel;
 
     /// <summary>
     /// //////////////////////////// VARIABLES
@@ -89,11 +91,25 @@ public class UIManager : MonoBehaviour
     /// //////////////////////////// BUTTON ONCLICK
     /// </summary>
 
-    public void OpenInfo()
+    public void ManageInfo()
     {
         infoOpened = !infoOpened;
         if(infoOpened) PanelOpenAnim(InfoPanel);
         else PanelCloseAnim(InfoPanel);
+    }
+    
+    public void ManageQuest()
+    {
+        questOpened = !questOpened;
+        if (questOpened) PanelOpenAnim(QuestPanel);
+        else PanelCloseAnim(QuestPanel);
+    }
+
+    public void ManageAchieve()
+    {
+        achieveOpened = !achieveOpened;
+        if(achieveOpened) PanelOpenAnim(AchievePanel);
+        else PanelCloseAnim(AchievePanel);
     }
 
     private void PanelOpenAnim(GameObject target)
