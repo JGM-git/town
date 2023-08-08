@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public GameObject InfoPanel;
     public GameObject QuestPanel;
     public GameObject AchievePanel;
+    public GameObject InvenPanel;
 
     /// <summary>
     /// //////////////////////////// VARIABLES
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
     private MainSystem mainSystem;
 
     public bool infoOpened = false;
-    public bool shopOpened = false;
+    public bool invenOpened = false;
     public bool questOpened = false;
     public bool achieveOpened = false;
     public bool mapOpened = false;
@@ -101,7 +102,7 @@ public class UIManager : MonoBehaviour
     public void ManageQuest()
     {
         questOpened = !questOpened;
-        if (questOpened) PanelOpenAnim(QuestPanel);
+        if(questOpened) PanelOpenAnim(QuestPanel);
         else PanelCloseAnim(QuestPanel);
     }
 
@@ -110,6 +111,13 @@ public class UIManager : MonoBehaviour
         achieveOpened = !achieveOpened;
         if(achieveOpened) PanelOpenAnim(AchievePanel);
         else PanelCloseAnim(AchievePanel);
+    }
+
+    public void ManageInven()
+    {
+        invenOpened = !invenOpened;
+        if(invenOpened) PanelOpenAnim(InvenPanel);
+        else PanelCloseAnim(InvenPanel);
     }
 
     private void PanelOpenAnim(GameObject target)

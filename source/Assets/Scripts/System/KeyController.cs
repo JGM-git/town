@@ -26,9 +26,14 @@ public class KeyController : MonoBehaviour
             ui.ManageInfo();
         }
         // Q - QUEST OPEN
-        if (Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             ui.ManageQuest();
+        }
+        // E - INVEN OPEN
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            ui.ManageInven();
         }
     }
 }
