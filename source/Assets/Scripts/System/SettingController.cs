@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Michsky.MUIP;
-using UnityEditor.PackageManager.UI;
 
 public class SettingController : MonoBehaviour
 {

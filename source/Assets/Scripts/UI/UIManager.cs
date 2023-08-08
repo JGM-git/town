@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
     public GameObject AchievePanel;
     public GameObject InvenPanel;
     public GameObject SettingPanel;
+    [Header("Quit")]
+    public GameObject QuitPanel;
 
     /// <summary>
     /// //////////////////////////// VARIABLES
@@ -43,6 +45,7 @@ public class UIManager : MonoBehaviour
     public bool achieveOpened = false;
     public bool mapOpened = false;
     public bool settingOpened = false;
+    public bool quitOpened = false;
     
     public Stack<Action> windowStack = new Stack<Action>();
     
@@ -215,4 +218,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// QUIT
+    /// </summary>
+    
+    public void ManageQuit()
+    {
+        quitOpened = !quitOpened;
+        QuitPanel.SetActive(quitOpened);
+    }
+
+    public void QuitGame()
+    {
+        // 추후 타이틀 씬으로 돌아가도록 변경하기
+        Application.Quit();
+    }
 }
