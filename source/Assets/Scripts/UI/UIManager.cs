@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     public GameObject QuestPanel;
     public GameObject AchievePanel;
     public GameObject InvenPanel;
+    public GameObject SettingPanel;
 
     /// <summary>
     /// //////////////////////////// VARIABLES
@@ -107,6 +108,7 @@ public class UIManager : MonoBehaviour
         {
             PanelCloseAnim(InfoPanel);
             if(windowStack.Peek() == ManageInfo) windowStack.Pop();
+            else ClearStack(ManageInfo);
         }
     }
     
@@ -122,6 +124,7 @@ public class UIManager : MonoBehaviour
         {
             PanelCloseAnim(QuestPanel);
             if(windowStack.Peek() == ManageQuest) windowStack.Pop();
+            else ClearStack(ManageQuest);
         }
     }
 
@@ -137,6 +140,7 @@ public class UIManager : MonoBehaviour
         {
             PanelCloseAnim(AchievePanel);
             if(windowStack.Peek() == ManageAchieve) windowStack.Pop();
+            else ClearStack(ManageAchieve);
         }
     }
 
@@ -152,6 +156,23 @@ public class UIManager : MonoBehaviour
         {
             PanelCloseAnim(InvenPanel);
             if(windowStack.Peek() == ManageInven) windowStack.Pop();
+            else ClearStack(ManageInven);
+        }
+    }
+    
+    public void ManageSetting()
+    {
+        settingOpened = !settingOpened;
+        if(settingOpened)
+        {
+            PanelOpenAnim(SettingPanel);
+            windowStack.Push(ManageSetting);
+        }
+        else
+        {
+            PanelCloseAnim(SettingPanel);
+            if(windowStack.Peek() == ManageSetting) windowStack.Pop();
+            else ClearStack(ManageSetting);
         }
     }
 
@@ -176,4 +197,22 @@ public class UIManager : MonoBehaviour
             target.SetActive(false);
         });
     }
+    
+    private void ClearStack(Action target)
+    {
+        Stack<Action> tempStack = new Stack<Action>();
+        while (windowStack.Count > 0)
+        {
+            Action method = windowStack.Pop();
+            if (method != target)
+            {
+                tempStack.Push(method);
+            }
+        }
+        while (tempStack.Count > 0)
+        {
+            windowStack.Push(tempStack.Pop());
+        }
+    }
+
 }

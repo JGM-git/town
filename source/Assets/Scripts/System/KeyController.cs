@@ -46,7 +46,8 @@ public class KeyController : MonoBehaviour
                 ui.windowStack.Peek().Invoke();
                 return;
             }
-            
+            // OPEN SETTING
+            ui.ManageSetting();
         }
     }
 }
