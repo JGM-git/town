@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -41,6 +42,8 @@ public class UIManager : MonoBehaviour
     public bool achieveOpened = false;
     public bool mapOpened = false;
     public bool settingOpened = false;
+    
+    public Stack<Action> windowStack = new Stack<Action>();
     
     /// <summary>
     /// //////////////////////////// VARIABLES FOR CALCULATING DATE
@@ -95,29 +98,61 @@ public class UIManager : MonoBehaviour
     public void ManageInfo()
     {
         infoOpened = !infoOpened;
-        if(infoOpened) PanelOpenAnim(InfoPanel);
-        else PanelCloseAnim(InfoPanel);
+        if(infoOpened)
+        {
+            PanelOpenAnim(InfoPanel);
+            windowStack.Push(ManageInfo);
+        }
+        else
+        {
+            PanelCloseAnim(InfoPanel);
+            if(windowStack.Peek() == ManageInfo) windowStack.Pop();
+        }
     }
     
     public void ManageQuest()
     {
         questOpened = !questOpened;
-        if(questOpened) PanelOpenAnim(QuestPanel);
-        else PanelCloseAnim(QuestPanel);
+        if(questOpened)
+        {
+            PanelOpenAnim(QuestPanel);
+            windowStack.Push(ManageQuest);
+        }
+        else
+        {
+            PanelCloseAnim(QuestPanel);
+            if(windowStack.Peek() == ManageQuest) windowStack.Pop();
+        }
     }
 
     public void ManageAchieve()
     {
         achieveOpened = !achieveOpened;
-        if(achieveOpened) PanelOpenAnim(AchievePanel);
-        else PanelCloseAnim(AchievePanel);
+        if(achieveOpened)
+        {
+            PanelOpenAnim(AchievePanel);
+            windowStack.Push(ManageAchieve);
+        }
+        else
+        {
+            PanelCloseAnim(AchievePanel);
+            if(windowStack.Peek() == ManageAchieve) windowStack.Pop();
+        }
     }
 
     public void ManageInven()
     {
         invenOpened = !invenOpened;
-        if(invenOpened) PanelOpenAnim(InvenPanel);
-        else PanelCloseAnim(InvenPanel);
+        if(invenOpened)
+        {
+            PanelOpenAnim(InvenPanel);
+            windowStack.Push(ManageInven);
+        }
+        else
+        {
+            PanelCloseAnim(InvenPanel);
+            if(windowStack.Peek() == ManageInven) windowStack.Pop();
+        }
     }
 
     private void PanelOpenAnim(GameObject target)
@@ -128,6 +163,7 @@ public class UIManager : MonoBehaviour
         seq.Append(target.transform.DOScale(1.05f, 0.2f));
         seq.Append(target.transform.DOScale(1f, 0.1f));
         seq.Play();
+        target.transform.SetAsLastSibling();
     }
 
     private void PanelCloseAnim(GameObject target)

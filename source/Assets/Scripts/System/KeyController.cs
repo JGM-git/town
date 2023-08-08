@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,18 @@ public class KeyController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             ui.ManageInven();
+        }
+        
+        // ESC
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            // CLOSE WINDOW
+            if(ui.windowStack.Count > 0)
+            {
+                ui.windowStack.Peek().Invoke();
+                return;
+            }
+            
         }
     }
 }
