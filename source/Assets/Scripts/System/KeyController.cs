@@ -24,16 +24,19 @@ public class KeyController : MonoBehaviour
         // S - INFO OPEN
         if(Input.GetKeyDown(KeyCode.S))
         {
+            if(ui.settingOpened) return;
             ui.ManageInfo();
         }
         // Q - QUEST OPEN
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            if(ui.settingOpened) return;
             ui.ManageQuest();
         }
         // E - INVEN OPEN
         if(Input.GetKeyDown(KeyCode.E))
         {
+            if(ui.settingOpened) return;
             ui.ManageInven();
         }
         
