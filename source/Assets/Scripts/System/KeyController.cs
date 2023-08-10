@@ -50,6 +50,7 @@ public class KeyController : MonoBehaviour
                 return;
             }
             // OPEN SETTING
+            if (ui.quitOpened) return;
             ui.ManageSetting();
         }
     }
