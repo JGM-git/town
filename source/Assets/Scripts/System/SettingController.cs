@@ -14,7 +14,6 @@ public class SettingController : MonoBehaviour
     /// VARIABLES
     /// </summary>
     private string dataPath;
-
     public Setting currentSetting;
 
     /// <summary>

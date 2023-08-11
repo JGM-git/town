@@ -10,19 +10,22 @@ public class Setting
     public Audio audio;
     public Control control;
 
+    [Serializable]
     public class General
     {
         public string screen;
         public string language;
     }
-
+    
+    [Serializable]
     public class Audio
     {
         public float master;
         public float bgm;
         public float effect;
     }
-
+    
+    [Serializable]
     public class Control
     {
         public float sensitivity;
