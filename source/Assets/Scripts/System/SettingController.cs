@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Windows.Forms;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using Application = UnityEngine.Application;
 using Screen = UnityEngine.Screen;
 
