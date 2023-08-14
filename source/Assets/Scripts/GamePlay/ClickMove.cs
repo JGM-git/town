@@ -30,18 +30,17 @@ public class ClickMove : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
                 Debug.LogFormat("{0} - {1}", hit.transform.name, hit.point);
-                //anim.SetBool("isWalking", true);
+                anim.SetBool("isWalking", true);
                 agent.isStopped = false;
                 agent.SetDestination(hit.point);
             }
         }
-
-        if (agent.remainingDistance < 0.1f)
+        else if (agent.remainingDistance < 0.1f)
         {
-            //anim.SetBool("isWalking", false);
+            anim.SetBool("isWalking", false);
             agent.isStopped = true;
         }
     }
