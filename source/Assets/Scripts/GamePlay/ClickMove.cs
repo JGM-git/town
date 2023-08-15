@@ -75,7 +75,6 @@ public class ClickMove : MonoBehaviour
     {
         Vector2 forward = new Vector2(transform.position.z, transform.position.x);
         Vector2 steeringTarget = new Vector2(agent.steeringTarget.z, agent.steeringTarget.x);
-        Debug.LogFormat("STEERING TARGET : {0}", steeringTarget);
     
         Vector2 dir = steeringTarget - forward;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
