@@ -3938,6 +3938,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292652882}
   m_CullTransparentMesh: 1
+--- !u!1 &297691179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297691181}
+  - component: {fileID: 297691180}
+  m_Layer: 0
+  m_Name: Weather Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &297691180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297691179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270012b27b9dea2468d79c4ddddeace4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weathers:
+  - name: Sunny
+    icon: {fileID: 21300000, guid: d03fa1cab8b08ef45833cfb333f6a848, type: 3}
+    weatherEffect: {fileID: 0}
+    soundEffect: {fileID: 0}
+  - name: Rainy
+    icon: {fileID: 21300000, guid: 22dba046a8b8cd840be5c37d6a7e1948, type: 3}
+    weatherEffect: {fileID: 4211962374910474026, guid: 5102e8af0f179d04c84846db61dc7b82, type: 3}
+    soundEffect: {fileID: 0}
+  - name: Hot
+    icon: {fileID: 21300000, guid: 04455846126a38a4c8588ae49466b178, type: 3}
+    weatherEffect: {fileID: 0}
+    soundEffect: {fileID: 0}
+  - name: Cold
+    icon: {fileID: 21300000, guid: 345cb90bdfdb90a42814d534f8c07a77, type: 3}
+    weatherEffect: {fileID: 0}
+    soundEffect: {fileID: 0}
+  - name: Cloudy
+    icon: {fileID: 21300000, guid: ed71180ab33ac8d47aecef3f493a773f, type: 3}
+    weatherEffect: {fileID: 0}
+    soundEffect: {fileID: 0}
+  - name: Snowy
+    icon: {fileID: 21300000, guid: f08810b7ed051364a906d43b6ca24e82, type: 3}
+    weatherEffect: {fileID: 0}
+    soundEffect: {fileID: 0}
+  currentWeather:
+    name: 
+    icon: {fileID: 0}
+    weatherEffect: {fileID: 0}
+    soundEffect: {fileID: 0}
+--- !u!4 &297691181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297691179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.5020676, y: 6.8404355, z: 0.5040498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &300466862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1840654700667882, guid: 64960d3d1200a1e40bd9fa066810606a, type: 3}
@@ -19539,7 +19613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902bde1bfdc576644af6ff2520ee40d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeather: 0
   clock:
     year: 0
     month: 0
@@ -31395,6 +31468,7 @@ SceneRoots:
   - {fileID: 555048049}
   - {fileID: 575917474}
   - {fileID: 18104154}
+  - {fileID: 297691181}
   - {fileID: 1521716966}
   - {fileID: 4964183}
   - {fileID: 607316599}
