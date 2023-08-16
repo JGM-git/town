@@ -4,7 +4,7 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ClickMove : MonoBehaviour
+public class MoveController : MonoBehaviour
 {
     /// <summary>
     /// VARIABLES
