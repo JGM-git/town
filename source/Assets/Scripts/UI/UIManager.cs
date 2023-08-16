@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     public GameObject QuitPanel;
 
     /// <summary>
-    /// //////////////////////////// VARIABLES
+    /// VARIABLES
     /// </summary>
     private MainSystem mainSystem;
 
@@ -50,14 +50,14 @@ public class UIManager : MonoBehaviour
     public Stack<Action> windowStack = new Stack<Action>();
     
     /// <summary>
-    /// //////////////////////////// VARIABLES FOR CALCULATING DATE
+    /// VARIABLES FOR CALCULATING DATE
     /// </summary>
     private static string[] monthNames = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     private static string[] dayNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     
 
     /// <summary>
-    /// //////////////////////////// EVENT FUNCTIONS
+    /// EVENT FUNCTIONS
     /// </summary>
     
     void Start()
@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// //////////////////////////// CUSTOM FUNCTIONS
+    /// CUSTOM FUNCTIONS
     /// </summary>
 
     public void RefreshMoney()
@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// //////////////////////////// BUTTON ONCLICK
+    /// BUTTON ONCLICK
     /// </summary>
 
     public void ManageInfo()
@@ -232,5 +232,14 @@ public class UIManager : MonoBehaviour
     {
         // 추후 타이틀 씬으로 돌아가도록 변경하기
         Application.Quit();
+    }
+
+    /// <summary>
+    /// WEATHER
+    /// </summary>
+    
+    public void ChangeWeatherIcon(Sprite targetIcon)
+    {
+        WeatherIcon.sprite = targetIcon;
     }
 }

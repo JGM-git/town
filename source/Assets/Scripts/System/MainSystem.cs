@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class MainSystem : MonoBehaviour
 {
-    public enum Weather
-    {
-        Sunny,
-        Rainy,
-        Hot,
-        Cold,
-        Cloudy,
-        Snowy
-    };
-
     [System.Serializable]
     public class Clock
     {
@@ -29,7 +19,6 @@ public class MainSystem : MonoBehaviour
     /// </summary>
     
     [Header ("System Variables")]
-    public Weather currentWeather;
     public Clock clock;
     public int money;
     [SerializeField]
@@ -37,7 +26,7 @@ public class MainSystem : MonoBehaviour
     private UIManager ui;
 
     /// <summary>
-    /// //////////////////////////// EVENT FUNCTIONS
+    /// EVENT FUNCTIONS
     /// </summary>
 
     void Awake()
@@ -68,7 +57,7 @@ public class MainSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// //////////////////////////// TIME MANAGEMENT
+    /// TIME MANAGEMENT
     /// </summary>
 
     private void ManageClock()
