@@ -24,6 +24,7 @@ public class WeatherController : MonoBehaviour
     public WeatherData currentWeather;
     private MainSystem mainSystem;
     private UIManager uiManager;
+    private WeatherEffect weatherEffect;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -32,6 +33,8 @@ public class WeatherController : MonoBehaviour
     {
         mainSystem = FindObjectOfType<MainSystem>();
         uiManager = FindObjectOfType<UIManager>();
+        weatherEffect = FindObjectOfType<WeatherEffect>();
+        PlayerWeather(weathers[5]);
     }
 
     /// <summary>
@@ -41,7 +44,8 @@ public class WeatherController : MonoBehaviour
     public void PlayerWeather(WeatherData target)
     {
         uiManager.ChangeWeatherIcon(target.icon);
-        //if(target.weatherEffect != null)
+        if(target.weatherEffect != null) weatherEffect.PlayParticle(target.weatherEffect);
+        if(target.soundEffect != null) weatherEffect.PlayAudio(target.soundEffect);
     }
     
     public void ChangeWeather(WeatherData target)
