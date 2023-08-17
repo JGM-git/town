@@ -10,7 +10,7 @@ public class WeatherEffect : MonoBehaviour
     public void PlayParticle(ParticleSystem targetParticle)
     {
         if(effect != null) Destroy(effect);
-        effect = Instantiate(targetParticle, transform.position + Vector3.up * 10f, Quaternion.identity);
+        effect = Instantiate(targetParticle, transform.position + Vector3.up * 25f, Quaternion.identity);
         effect.Play();
     }
 
