@@ -31,6 +31,14 @@ public class UIManager : MonoBehaviour
     public GameObject AchievePanel;
     public GameObject InvenPanel;
     public GameObject SettingPanel;
+    [Header("Info Objects")]
+    public TMP_Text KnowledgeText;
+    public TMP_Text LuckText;
+    public TMP_Text StrengthText;
+    public TMP_Text DrivingText;
+    public TMP_Text ReputationText;
+    public TMP_Text FaithText;
+    public TMP_Text LifeText;
     [Header("Quit")]
     public GameObject QuitPanel;
 
@@ -38,6 +46,7 @@ public class UIManager : MonoBehaviour
     /// VARIABLES
     /// </summary>
     private MainSystem mainSystem;
+    private PlayerManager playerManager;
 
     public bool infoOpened = false;
     public bool invenOpened = false;
@@ -63,6 +72,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         mainSystem = FindObjectOfType<MainSystem>();
+        playerManager = FindObjectOfType<PlayerManager>();
         RefreshMoney();
         RefreshTime();
     }
@@ -73,7 +83,7 @@ public class UIManager : MonoBehaviour
 
     public void RefreshMoney()
     {
-        MoneyText.text = "$" + mainSystem.money.ToString();
+        MoneyText.text = "$" + playerManager.money.ToString();
     }
 
     public void RefreshTime()
@@ -104,6 +114,7 @@ public class UIManager : MonoBehaviour
         infoOpened = !infoOpened;
         if(infoOpened)
         {
+            RefreshInfo();
             PanelOpenAnim(InfoPanel);
             windowStack.Push(ManageInfo);
         }
@@ -241,5 +252,16 @@ public class UIManager : MonoBehaviour
     public void ChangeWeatherIcon(Sprite targetIcon)
     {
         WeatherIcon.sprite = targetIcon;
+    }
+
+    private void RefreshInfo()
+    {
+        KnowledgeText.text = playerManager.knowledge.ToString();
+        LuckText.text = playerManager.luck.ToString();
+        StrengthText.text = playerManager.strength.ToString();
+        DrivingText.text = playerManager.driving.ToString();
+        ReputationText.text = playerManager.reputation.ToString();
+        FaithText.text = playerManager.faith.ToString();
+        LifeText.text = playerManager.life.ToString();
     }
 }
