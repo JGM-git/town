@@ -9,13 +9,11 @@ public class MoveController : MonoBehaviour
     /// <summary>
     /// VARIABLES
     /// </summary>
-    [SerializeField]
     private NavMeshAgent agent;
-    [SerializeField]
     private Animator anim;
+    private PlayerManager playerManager;
     [SerializeField]
     private float moveLimit = 0.3f;
-
     public Transform Spot;
     
     /// <summary>
@@ -27,6 +25,7 @@ public class MoveController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         anim = GetComponent<Animator>();
+        playerManager = GetComponent<PlayerManager>();
         SetAgentShape();
     }
 
@@ -86,19 +85,11 @@ public class MoveController : MonoBehaviour
 
     public void Run()
     {
+        if (playerManager.stamina <= 0f) return;
+        
         bool isRun = anim.GetBool("isRun");
         isRun = !isRun;
         anim.SetBool("isRun", isRun);
         agent.speed = isRun ? 3f : 1f;
     }
-
-    /*public void Anima()
-    {
-        bool isWalking = anim.GetBool("isWalking");
-        bool isRun = anim.GetBool("isRun");
-        if (isWalking == true && isRun == false)
-        {
-            anim.
-        }
-    }*/
 }

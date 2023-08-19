@@ -56,7 +56,7 @@ public class KeyController : MonoBehaviour
             ui.ManageSetting();
         }
         
-        //SHIFT
+        // SHIFT
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             moveController.Run();

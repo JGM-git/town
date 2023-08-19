@@ -39,7 +39,8 @@ public class UIManager : MonoBehaviour
     public TMP_Text ReputationText;
     public TMP_Text FaithText;
     public TMP_Text LifeText;
-    [Header("Quit")]
+    [Header("ETC")]
+    public Slider StaminaImage;
     public GameObject QuitPanel;
 
     /// <summary>
@@ -77,10 +78,20 @@ public class UIManager : MonoBehaviour
         RefreshTime();
     }
 
+    void Update()
+    {
+        StaminaBar();
+    }
+
     /// <summary>
     /// CUSTOM FUNCTIONS
     /// </summary>
 
+    private void StaminaBar()
+    {
+        StaminaImage.value = Mathf.Lerp(StaminaImage.value, playerManager.stamina / playerManager.maxStamina, Time.deltaTime);
+    }
+    
     public void RefreshMoney()
     {
         MoneyText.text = "$" + playerManager.money.ToString();

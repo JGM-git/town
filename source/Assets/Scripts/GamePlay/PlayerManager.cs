@@ -17,15 +17,29 @@ public class PlayerManager : MonoBehaviour
     public int faith;
     public int life;
     public float stamina;
+    public float maxStamina;
     public List<StatusEffect> statusEffects;
+
+    private Animator anim;
     
     void Start()
     {
-        
+        stamina = maxStamina;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        
+        // STAMINA MANAGEMENT
+        if (anim.GetBool("isRun"))
+        {
+            if(stamina >= 0f)
+                stamina -= Time.deltaTime * 10f;
+        }
+        else
+        {
+            if (stamina <= maxStamina)
+                stamina += Time.deltaTime * 10f;
+        }
     }
 }
