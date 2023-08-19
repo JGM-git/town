@@ -50,6 +50,8 @@ public class MoveController : MonoBehaviour
         {
             Spot.gameObject.SetActive(false);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isRun", false);
+            agent.speed = 1f;
             agent.isStopped = true;
             agent.ResetPath();
         }
@@ -81,4 +83,22 @@ public class MoveController : MonoBehaviour
     
         transform.localEulerAngles = Vector3.up * angle;
     }
+
+    public void Run()
+    {
+        bool isRun = anim.GetBool("isRun");
+        isRun = !isRun;
+        anim.SetBool("isRun", isRun);
+        agent.speed = isRun ? 3f : 1f;
+    }
+
+    /*public void Anima()
+    {
+        bool isWalking = anim.GetBool("isWalking");
+        bool isRun = anim.GetBool("isRun");
+        if (isWalking == true && isRun == false)
+        {
+            anim.
+        }
+    }*/
 }

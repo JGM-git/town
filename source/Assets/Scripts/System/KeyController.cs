@@ -9,6 +9,7 @@ public class KeyController : MonoBehaviour
     /// VARIABLES
     /// </summary>
     private UIManager ui;
+    private MoveController moveController;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -17,6 +18,7 @@ public class KeyController : MonoBehaviour
     void Start()
     {
         ui = FindObjectOfType<UIManager>();
+        moveController = FindObjectOfType<MoveController>();
     }
     
     void Update()
@@ -53,5 +55,12 @@ public class KeyController : MonoBehaviour
             if(ui.quitOpened) return;  
             ui.ManageSetting();
         }
+        
+        //SHIFT
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveController.Run();
+        }
+        
     }
 }
