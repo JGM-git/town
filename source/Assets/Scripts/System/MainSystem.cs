@@ -20,7 +20,6 @@ public class MainSystem : MonoBehaviour
     
     [Header ("System Variables")]
     public Clock clock;
-    public int money;
     [SerializeField]
     private float time = 0f;
     private UIManager ui;
@@ -38,7 +37,6 @@ public class MainSystem : MonoBehaviour
             hour = 12,
             minute = 0
         };
-        money = 0;
     }
 
     void Start()

@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     /// <summary>
     /// VARIABLES
     /// </summary>
     public float money;
     public Job currentJob;
-    public int Knowledge;
-    public int Luck;
-    public int Strength;
-    public int Driving;
-    public int Reputation;
-    public int Faith;
-    public int Life;
-    public int Stamina;
+    public int knowledge;
+    public int luck;
+    public int strength;
+    public int driving;
+    public int reputation;
+    public int faith;
+    public int life;
+    public float stamina;
+    public List<StatusEffect> statusEffects;
     
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
