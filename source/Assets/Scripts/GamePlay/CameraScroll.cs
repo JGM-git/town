@@ -35,6 +35,7 @@ public class CameraScroll : MonoBehaviour
 
     public void Reset()
     {
-        cam.m_Lens.OrthographicSize = firstValue;
+        currentValue = firstValue;
+        cam.m_Lens.OrthographicSize = currentValue;
     }
 }
