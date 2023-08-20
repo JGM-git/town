@@ -10,6 +10,7 @@ public class KeyController : MonoBehaviour
     /// </summary>
     private UIManager ui;
     private MoveController moveController;
+    private CameraScroll cameraScroll;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -19,6 +20,7 @@ public class KeyController : MonoBehaviour
     {
         ui = FindObjectOfType<UIManager>();
         moveController = FindObjectOfType<MoveController>();
+        cameraScroll = FindObjectOfType<CameraScroll>();
     }
     
     void Update()
@@ -57,10 +59,13 @@ public class KeyController : MonoBehaviour
         }
         
         // SHIFT
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             moveController.Run();
         }
         
+        // SCROLL - CAMERA ZOOM
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        cameraScroll.Zoom(scroll);
     }
 }
