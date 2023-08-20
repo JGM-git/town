@@ -10,6 +10,7 @@ public class CameraScroll : MonoBehaviour
     /// </summary>
     public float minValue;
     public float maxValue;
+    public float firstValue;
     public float currentValue;
 
     private CinemachineVirtualCamera cam;
@@ -21,6 +22,7 @@ public class CameraScroll : MonoBehaviour
     void Start()
     {
         cam = GetComponent<CinemachineVirtualCamera>();
+        cam.m_Lens.OrthographicSize = firstValue;
     }
     
     
@@ -29,5 +31,10 @@ public class CameraScroll : MonoBehaviour
         currentValue -= scroll;
         currentValue = Mathf.Clamp(currentValue, minValue, maxValue);
         cam.m_Lens.OrthographicSize = currentValue;
+    }
+
+    public void Reset()
+    {
+        cam.m_Lens.OrthographicSize = firstValue;
     }
 }

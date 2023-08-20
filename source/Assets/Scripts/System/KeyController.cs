@@ -44,7 +44,7 @@ public class KeyController : MonoBehaviour
             ui.ManageInven();
         }
         
-        // ESC
+        // ESC - MENU
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             // CLOSE WINDOW
@@ -58,7 +58,7 @@ public class KeyController : MonoBehaviour
             ui.ManageSetting();
         }
         
-        // SHIFT
+        // SHIFT - RUN
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             moveController.Run();
@@ -67,5 +67,11 @@ public class KeyController : MonoBehaviour
         // SCROLL - CAMERA ZOOM
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         cameraScroll.Zoom(scroll);
+        
+        // WHEEL BUTTON - RESET CAMERA ZOOM
+        if (Input.GetMouseButtonDown(2))
+        {
+            cameraScroll.Reset();
+        }
     }
 }
