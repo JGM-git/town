@@ -4,5 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Job", menuName = "Scriptable Object/Job", order = int.MaxValue)]
 public class Job : ScriptableObject
 {
+    public string name;
     
 }
