@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Door
+  - NpcStop
+  - NpcMove
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
