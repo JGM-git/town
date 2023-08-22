@@ -8387,6 +8387,8 @@ MonoBehaviour:
   mapOpened: 0
   settingOpened: 0
   quitOpened: 0
+  CanRun: {r: 0, g: 0, b: 0, a: 0}
+  CannotRun: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &555048049
 Transform:
   m_ObjectHideFlags: 0
@@ -20593,7 +20595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4184692880760204, guid: b1177e18354fd6d47a8cefb32959d8aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.23
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 4184692880760204, guid: b1177e18354fd6d47a8cefb32959d8aa, type: 3}
       propertyPath: m_LocalRotation.w
