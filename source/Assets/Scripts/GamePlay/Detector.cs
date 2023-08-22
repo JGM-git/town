@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Detector : MonoBehaviour
@@ -15,6 +16,13 @@ public class Detector : MonoBehaviour
     {
         if (!InteractableTag.Contains(other.tag)) return;
         detected = other;
+        detected.GetComponent<PrintInteractable>().GenerateIcon();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        detected.GetComponent<PrintInteractable>().DestroyIcon();
+        detected = null;
     }
 
     public void DetectAction()
