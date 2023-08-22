@@ -34,12 +34,12 @@ public class PlayerManager : MonoBehaviour
         if (anim.GetFloat("Blend") == 1f)
         {
             if(stamina >= 0f)
-                stamina -= Time.deltaTime * 10f;
+                stamina -= Time.deltaTime * 15f;
         }
         else
         {
             if (stamina <= maxStamina)
-                stamina += Time.deltaTime * 10f;
+                stamina += Time.deltaTime * 5f;
         }
     }
 }

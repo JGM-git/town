@@ -40,7 +40,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text FaithText;
     public TMP_Text LifeText;
     [Header("ETC")]
-    public Slider StaminaImage;
+    public Slider StaminaSlider;
+
+    public Image StaminaImage;
     public GameObject QuitPanel;
 
     /// <summary>
@@ -56,6 +58,9 @@ public class UIManager : MonoBehaviour
     public bool mapOpened = false;
     public bool settingOpened = false;
     public bool quitOpened = false;
+
+    public Color CanRun;
+    public Color CannotRun;
     
     public Stack<Action> windowStack = new Stack<Action>();
     
@@ -89,7 +94,9 @@ public class UIManager : MonoBehaviour
 
     private void StaminaBar()
     {
-        StaminaImage.value = Mathf.Lerp(StaminaImage.value, playerManager.stamina / playerManager.maxStamina, Time.deltaTime);
+        StaminaSlider.value = Mathf.Lerp(StaminaSlider.value, playerManager.stamina / playerManager.maxStamina, Time.deltaTime);
+        if (playerManager.stamina / playerManager.maxStamina * 100f > 10f) StaminaImage.color = CanRun;
+        else StaminaImage.color = CannotRun;
     }
     
     public void RefreshMoney()
