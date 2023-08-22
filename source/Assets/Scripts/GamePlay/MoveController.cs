@@ -59,13 +59,22 @@ public class MoveController : MonoBehaviour
             agent.isStopped = true;
             agent.ResetPath();
         }
-        
-        if(!agent.isStopped && transform.position != agent.steeringTarget) Rotate();
+
+        if (playerManager.stamina <= 1f)
+        {
+            anim.SetBool("isRun", false);
+            agent.speed = 1f;
+            anim.SetFloat("Blend", 0.5f);
+            return;
+        }
+
+        if (!agent.isStopped && transform.position != agent.steeringTarget) Rotate();
 
         if (Input.GetKeyDown(KeyCode.H))
         {
             Debug.Log("isStopped : " + agent.isStopped);
             Debug.Log("destination : " + agent.destination);
+            Debug.Log(playerManager.stamina);
         }
     }
 
@@ -96,11 +105,7 @@ public class MoveController : MonoBehaviour
 
     public void Run()
     {
-        if (playerManager.stamina <= 0f)
-        {
-            anim.SetBool("isRun", false);
-            return;
-        }
+       
 
         if (anim.GetBool("isWalking"))
         {
