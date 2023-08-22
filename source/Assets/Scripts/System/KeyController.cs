@@ -11,6 +11,7 @@ public class KeyController : MonoBehaviour
     private UIManager ui;
     private MoveController moveController;
     private CameraScroll cameraScroll;
+    private Detector detector;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -21,6 +22,7 @@ public class KeyController : MonoBehaviour
         ui = FindObjectOfType<UIManager>();
         moveController = FindObjectOfType<MoveController>();
         cameraScroll = FindObjectOfType<CameraScroll>();
+        detector = FindObjectOfType<Detector>();
     }
     
     void Update()
@@ -42,6 +44,11 @@ public class KeyController : MonoBehaviour
         {
             if(ui.settingOpened) return;
             ui.ManageInven();
+        }
+        // F - INTERACTION
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            detector.DetectAction();
         }
         
         // ESC - MENU
