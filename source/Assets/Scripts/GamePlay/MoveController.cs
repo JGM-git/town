@@ -42,7 +42,8 @@ public class MoveController : MonoBehaviour
                 Spot.gameObject.SetActive(true);
                 Spot.position = hit.point + Vector3.up * 0.1f;
                 anim.SetBool("isWalking", true);
-                anim.SetFloat("Blend", 0.5f);
+                if (anim.GetBool("isWalking") && anim.GetBool("isRun")) anim.SetFloat("Blend", 1f);
+                else anim.SetFloat("Blend", 0.5f);
                 agent.isStopped = false;
                 agent.SetDestination(hit.point);
             }
@@ -52,6 +53,7 @@ public class MoveController : MonoBehaviour
             Debug.Log("remainingDistance < 0.4f !!");
             Spot.gameObject.SetActive(false);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isRun", false);
             anim.SetFloat("Blend", 0);
             agent.speed = 1f;
             agent.isStopped = true;
@@ -94,12 +96,19 @@ public class MoveController : MonoBehaviour
 
     public void Run()
     {
-        if (playerManager.stamina <= 0f) return;
+        if (playerManager.stamina <= 0f)
+        {
+            anim.SetBool("isRun", false);
+            return;
+        }
 
         if (anim.GetBool("isWalking"))
         {
+            bool isRun = anim.GetBool("isRun");
             float blend = anim.GetFloat("Blend");
+            isRun = isRun ? false : true;
             blend = blend == 1 ? 0.5f : 1f;
+            anim.SetBool("isRun", isRun);
             anim.SetFloat("Blend", blend);
             agent.speed = blend == 1 ? 3f : 1f;
         }
