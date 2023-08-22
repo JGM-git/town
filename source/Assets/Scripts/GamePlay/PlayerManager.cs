@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         // STAMINA MANAGEMENT
-        if (anim.GetBool("isRun"))
+        if (anim.GetFloat("Blend") == 1f)
         {
             if(stamina >= 0f)
                 stamina -= Time.deltaTime * 10f;
