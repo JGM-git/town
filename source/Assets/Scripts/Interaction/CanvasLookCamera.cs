@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasLookCamera : MonoBehaviour
 {
-    private Transform camTransform;
-    private Vector3 originalScale;
-
+    /// <summary>
+    /// VARIABLES
+    /// </summary>
+    private Canvas canvas;
+    private RectTransform iconRect;
+    private RectTransform rect;
+    private Vector3 centerPos;
+    private MeshRenderer renderer;
+    
+    /// <summary>
+    /// EVENT FUNCTIONS
+    /// </summary>
     void Start()
     {
-//        GameObject ParentObject = transform.parent.gameObject;
-//        transform.SetParent(ParentObject.transform, false);
-        originalScale = transform.localScale;
-        camTransform = Camera.main.transform;
+        canvas = GetComponent<Canvas>();
+        iconRect = transform.GetChild(0).GetComponent<RectTransform>();
+        renderer = transform.parent.GetComponent<MeshRenderer>();
     }
 
     void Update()
     {
-        //transform.localScale = originalScale;
-        transform.LookAt(camTransform);
+        centerPos = renderer.bounds.center;
+    }
+
+    void LateUpdate()
+    {
+        iconRect.position = Camera.main.WorldToScreenPoint(centerPos + Vector3.up * 3f);
     }
 }
