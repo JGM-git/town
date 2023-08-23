@@ -21,6 +21,7 @@ public class Detector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!InteractableTag.Contains(other.tag)) return;
         detected.GetComponent<PrintInteractable>().DestroyIcon();
         detected = null;
     }

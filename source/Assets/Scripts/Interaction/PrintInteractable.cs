@@ -19,7 +19,8 @@ public class PrintInteractable : MonoBehaviour
     public void GenerateIcon()
     {
         centerPos = GetComponent<MeshRenderer>().bounds.center;
-        instantiated = Instantiate(interactablePrefab, centerPos + Vector3.up * 2f, Quaternion.identity);
+        //instantiated = Instantiate(interactablePrefab, centerPos + Vector3.up * 2.5f, Quaternion.identity);
+        instantiated = Instantiate(interactablePrefab);
         instantiated.transform.SetParent(transform);
     }
 
