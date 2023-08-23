@@ -33,5 +33,10 @@ public class Detector : MonoBehaviour
         {
             detected.GetComponent<Door>().ManageDoor();
         }
+
+        if (detected.tag == "NpcStop")
+        {
+            detected.GetComponent<NpcStop>().ManageNpcStop();
+        }
     }
 }
