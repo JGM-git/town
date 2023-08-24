@@ -58,7 +58,7 @@ public class KeyController : MonoBehaviour
             if(ui.windowStack.Count > 0)
             {
                 ui.windowStack.Peek().Invoke();
-                return;
+                 return;
             }
             // OPEN SETTING
             if(ui.quitOpened) return;  

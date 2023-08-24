@@ -13,7 +13,7 @@ public class MoveController : MonoBehaviour
     private Animator anim;
     private PlayerManager playerManager;
     [SerializeField]
-    private float moveLimit = 0.3f;
+    private float moveLimit = 2f;
     public Transform Spot;
     
     /// <summary>
@@ -37,8 +37,12 @@ public class MoveController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
+                Debug.Log(hit.point);
                 if (Vector3.Distance(hit.point, transform.position) < moveLimit)
+                {
+                    Debug.Log(Vector3.Distance(hit.point, transform.position));
                     return;
+                }
                 Spot.gameObject.SetActive(true);
                 Spot.position = hit.point + Vector3.up * 0.1f;
                 anim.SetBool("isWalking", true);
