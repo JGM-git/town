@@ -13,6 +13,7 @@ public class Setting
     [Serializable]
     public class General
     {
+        public string resolution;
         public string screen;
         public string language;
     }
@@ -40,6 +41,7 @@ public class Setting
     {
         this.general = new General()
         {
+            resolution = "1920*1080",
             screen = "FullScreen",
             language = "en-US"
         };
