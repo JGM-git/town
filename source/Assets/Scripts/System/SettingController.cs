@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -14,6 +15,8 @@ public class SettingController : MonoBehaviour
     /// </summary>
     private string dataPath;
     public Setting currentSetting;
+    private Resolution[] resolutions;
+    public Dropdown resolutionDropdown;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -24,7 +27,38 @@ public class SettingController : MonoBehaviour
         dataPath = Application.persistentDataPath + "/settings.json";
         LoadData();
     }
+    
+    /// <summary>
+    /// RESOLUTION
+    /// </summary>
 
+    public void InitResolution()
+    {
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+        foreach (Resolution resolution in resolutions)
+        {
+            string option = resolution.width + " x " + resolution.height;
+            resolutionDropdown.options.Add(new Dropdown.OptionData(option));
+        }
+        int currentResolutionIndex = GetCurrentResolutionIndex();
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+    }
+    
+    private int GetCurrentResolutionIndex()
+    {
+        Resolution currentResolution = Screen.currentResolution;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            if (resolutions[i].width == currentResolution.width && resolutions[i].height == currentResolution.height)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     /// <summary>
     /// LOAD / SAVE FUNCTIONS
     /// </summary>
@@ -65,5 +99,18 @@ public class SettingController : MonoBehaviour
             currentSetting = new Setting();
             SaveData(currentSetting);
         }
+        
+        ApplySetting();
+    }
+
+    public void ApplySetting()
+    {
+        // GENERAL
+        string[] resolutionData = currentSetting.general.resolution.Split("*");
+        FullScreenMode screenMode;
+        if (currentSetting.general.screen == "FullScreen") screenMode = FullScreenMode.FullScreenWindow;
+        else if (currentSetting.general.screen == "Windowed") screenMode = FullScreenMode.Windowed;
+        else screenMode = FullScreenMode.MaximizedWindow;
+        Screen.SetResolution(int.Parse(resolutionData[0]), int.Parse(resolutionData[1]), screenMode);
     }
 }

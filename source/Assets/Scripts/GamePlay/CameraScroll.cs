@@ -28,7 +28,7 @@ public class CameraScroll : MonoBehaviour
     
     public void Zoom(float scroll)
     {
-        currentValue -= scroll;
+        currentValue -= scroll * 1.2f;
         currentValue = Mathf.Clamp(currentValue, minValue, maxValue);
         cam.m_Lens.OrthographicSize = currentValue;
     }
