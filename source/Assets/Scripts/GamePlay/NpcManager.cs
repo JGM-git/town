@@ -8,7 +8,8 @@ public class NpcManager : MonoBehaviour
     private Animator anim;
     private GameObject target;
     public int npcId;
-    public int[] questId;
+    public int questId;
+    public bool quest; //퀘스트가 있는 npc인지 없는 npc인지
     void Start()
     {
         anim = GetComponent<Animator>();

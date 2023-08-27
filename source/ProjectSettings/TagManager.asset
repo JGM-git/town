@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NpcStop
-  - NpcMove
+  - Door
+  - Npc
   layers:
   - Default
   - TransparentFX

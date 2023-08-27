@@ -40,4 +40,5 @@ public class Detector : MonoBehaviour
             detected.GetComponent<NpcManager>().NpcStop();
         }
     }
+
 }

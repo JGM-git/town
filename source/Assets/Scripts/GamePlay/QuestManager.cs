@@ -5,14 +5,15 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public int questId;
-    public int questActionIndex;
+    public int[] currentQuestId;
     public NpcManager npcManager;
 
-    Dictionary<int, QuestData> questList;
+    public Dictionary<int, QuestData> questList;
+    public Dictionary<int, QuestData> playerQuestList;
     // Start is called before the first frame update
     void Start()
     {
-        npcManager = GetComponent<NpcManager>();
+        npcManager = FindObjectOfType<NpcManager>();
         questList = new Dictionary<int, QuestData>();
         GenerateQuestData();
     }
@@ -20,15 +21,40 @@ public class QuestManager : MonoBehaviour
     public void GenerateQuestData()
     {
         questList.Add(questId = 10, new QuestData("어서오세요", new int[0]));
+        questList.Add(questId = 20, new QuestData("안녕히가세요", new int[0]));
     }
 
-    public int GetQuestIndex(int id)
+    public void GetQuestIndex()
     {
-        if (npcManager.npcId == id)
+        if (npcManager.quest == true)
         {
-            return questId =  npcManager.questId[0];
+            questId = npcManager.questId;
         }
-        else return 0;
+
     }
-  
+
+    public void AddQuest() //현재 퀘스트 리스트에 추가
+    {
+        //questList에서 questId로 조회한 후에 playerQuestList에 추가 
+        QuestData qd = questList[questId];
+        playerQuestList.Add(questId, qd);
+    }
+
+    public bool CompleteQuest()
+    {
+        return playerQuestList.Remove(npcManager.questId);
+        // 보상 지급
+    }
+
+    public Dictionary<int, QuestData> CheckCurrentQuest()
+    {
+        return playerQuestList;
+    }
+
+    public void AbandonQuest()
+    {
+        //퀘스트 UI에서 삭제 버튼 클릭시 퀘스트 포기 (playerQusetList에서 삭제)
+    }
+
+
 }

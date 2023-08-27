@@ -12,6 +12,8 @@ public class KeyController : MonoBehaviour
     private MoveController moveController;
     private CameraScroll cameraScroll;
     private Detector detector;
+    private QuestManager questManager;
+    private NpcManager npcManager;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -23,6 +25,8 @@ public class KeyController : MonoBehaviour
         moveController = FindObjectOfType<MoveController>();
         cameraScroll = FindObjectOfType<CameraScroll>();
         detector = FindObjectOfType<Detector>();
+        questManager = FindObjectOfType<QuestManager>();
+        npcManager = FindObjectOfType<NpcManager>();
     }
     
     void Update()
@@ -50,9 +54,14 @@ public class KeyController : MonoBehaviour
         {
             detector.DetectAction();
         }
-        
+        // H - QUEST INTERACTION    
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            questManager.GetQuestIndex();
+            questManager.AddQuest();
+        }
         // ESC - MENU
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             // CLOSE WINDOW
             if(ui.windowStack.Count > 0)
