@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class MoveController : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class MoveController : MonoBehaviour
                 }
                 Spot.gameObject.SetActive(true);
                 Spot.position = hit.point + Vector3.up * 0.1f;
+                SpotAnimation();
                 anim.SetBool("isWalking", true);
                 if (anim.GetBool("isWalking") && anim.GetBool("isRun")) anim.SetFloat("Blend", 1f);
                 else anim.SetFloat("Blend", 0.5f);
@@ -85,6 +87,12 @@ public class MoveController : MonoBehaviour
     /// <summary>
     /// CUSTOM FUNCTIONS
     /// </summary>
+
+    private void SpotAnimation()
+    {
+        Spot.gameObject.transform.localScale = Vector3.one * 0.01f;
+        Spot.gameObject.transform.DOScale(0.2f, 0.2f);
+    }
     
     private void SetAgentShape()
     {
