@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     public GameObject AchievePanel;
     public GameObject InvenPanel;
     public GameObject SettingPanel;
+    public GameObject EquipPanel;
     [Header("Info Objects")]
     public TMP_Text KnowledgeText;
     public TMP_Text LuckText;
@@ -58,6 +59,7 @@ public class UIManager : MonoBehaviour
     public bool mapOpened = false;
     public bool settingOpened = false;
     public bool quitOpened = false;
+    public bool equipOpened = false;
 
     public Color CanRun;
     public Color CannotRun;
@@ -206,6 +208,23 @@ public class UIManager : MonoBehaviour
             if(windowStack.Peek() == ManageSetting) windowStack.Pop();
             else ClearStack(ManageSetting);
         }
+    }
+
+    public void ManageEquip()
+    {
+        equipOpened = !equipOpened;
+        if(equipOpened)
+        {
+            PanelOpenAnim(EquipPanel);
+            windowStack.Push(ManageEquip);
+        }
+        else
+        {
+            PanelCloseAnim(EquipPanel);
+            if(windowStack.Peek() == ManageEquip) windowStack.Pop();
+            else ClearStack(ManageEquip);
+        }
+        
     }
 
     private void PanelOpenAnim(GameObject target)
