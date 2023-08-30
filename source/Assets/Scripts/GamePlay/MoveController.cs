@@ -34,16 +34,11 @@ public class MoveController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("MOUSE RIGHT CLICK !!");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                Debug.Log(hit.point);
                 if (Vector3.Distance(hit.point, transform.position) < moveLimit)
-                {
-                    Debug.Log(Vector3.Distance(hit.point, transform.position));
                     return;
-                }
                 Spot.gameObject.SetActive(true);
                 Spot.position = hit.point + Vector3.up * 0.1f;
                 SpotAnimation();
@@ -56,7 +51,6 @@ public class MoveController : MonoBehaviour
         }
         else if (agent.remainingDistance < 0.4f)
         {
-            Debug.Log("remainingDistance < 0.4f !!");
             Spot.gameObject.SetActive(false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isRun", false);
@@ -75,13 +69,6 @@ public class MoveController : MonoBehaviour
         }
 
         if (!agent.isStopped && transform.position != agent.steeringTarget) Rotate();
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Debug.Log("isStopped : " + agent.isStopped);
-            Debug.Log("destination : " + agent.destination);
-            Debug.Log(playerManager.stamina);
-        }
     }
 
     /// <summary>
