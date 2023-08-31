@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Cinemachine;
 
 public class CameraScroll : MonoBehaviour
@@ -28,6 +29,7 @@ public class CameraScroll : MonoBehaviour
     
     public void Zoom(float scroll)
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         currentValue -= scroll * 1.2f;
         currentValue = Mathf.Clamp(currentValue, minValue, maxValue);
         cam.m_Lens.OrthographicSize = currentValue;

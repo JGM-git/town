@@ -50,19 +50,25 @@ public class KeyController : MonoBehaviour
             ui.ManageInven();
         }
         // F - INTERACTION
-        if (Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             detector.DetectAction();
         }
+        // U - EQUIPMENT OPEN
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if(ui.settingOpened) return;
+            ui.ManageEquip();
+        }
         // H - QUEST INTERACTION    
-        if (Input.GetKeyDown(KeyCode.H))
+        if(Input.GetKeyDown(KeyCode.H))
         {
             questManager.GetQuestIndex();
             questManager.AddQuest();
             questManager.CheckCurrentQuest();
         }
         // ESC - MENU
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             // CLOSE WINDOW
             if(ui.windowStack.Count > 0)
