@@ -42,14 +42,4 @@ public class PlayerManager : MonoBehaviour
                 stamina += Time.deltaTime * 5f;
         }
     }
-
-    public void AddQuest()
-    {
-
-    }
-
-    public void RemoveQuest()
-    {
-
-    }
 }

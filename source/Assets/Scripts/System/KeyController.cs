@@ -59,6 +59,7 @@ public class KeyController : MonoBehaviour
         {
             questManager.GetQuestIndex();
             questManager.AddQuest();
+            questManager.CheckCurrentQuest();
         }
         // ESC - MENU
         if (Input.GetKeyDown(KeyCode.Escape))
