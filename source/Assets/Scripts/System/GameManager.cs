@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainSystem : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [System.Serializable]
     public class Clock
@@ -23,6 +23,9 @@ public class MainSystem : MonoBehaviour
     [SerializeField]
     private float time = 0f;
     private UIManager ui;
+    public TalkManager talkManager;
+    private bool isTalking = false;
+    public int talkingIndex = 0;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -42,6 +45,7 @@ public class MainSystem : MonoBehaviour
     void Start()
     {
         ui = FindObjectOfType<UIManager>();
+        talkManager = GetComponent<TalkManager>();
     }
 
     void Update()
@@ -106,5 +110,20 @@ public class MainSystem : MonoBehaviour
         {
             return 31;
         }
+    }
+    
+    // TALKING
+    
+    public void Talk(int id)
+    {
+        string talkData = talkManager.GetTalk(id, talkingIndex);
+        isTalking = true;
+        if (talkData == null)
+        {
+            isTalking = false;
+            talkingIndex = 0;
+        }
+        
+        talkingIndex++;
     }
 }

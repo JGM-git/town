@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// VARIABLES
     /// </summary>
-    private MainSystem mainSystem;
+    private GameManager gameManager;
     private PlayerManager playerManager;
 
     public bool infoOpened = false;
@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-        mainSystem = FindObjectOfType<MainSystem>();
+        gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         RefreshMoney();
         RefreshTime();
@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
 
     public void RefreshTime()
     {
-        MainSystem.Clock c = mainSystem.clock;
+        GameManager.Clock c = gameManager.clock;
         TimeText.text = string.Format("{0}:{1}", AddZero(c.hour), AddZero(c.minute));
         DateTime date = new DateTime(c.year, c.month, c.day);
         int dayIdx = (int) date.DayOfWeek;

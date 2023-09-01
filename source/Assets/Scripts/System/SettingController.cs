@@ -8,6 +8,10 @@ using System.Windows.Forms;
 using Application = UnityEngine.Application;
 using Screen = UnityEngine.Screen;
 
+/// <summary>
+/// 유니티 UI 드롭다운을 Modern UI Pack 드롭다운으로 교체해야 함
+/// </summary>
+
 public class SettingController : MonoBehaviour
 {
     /// <summary>
@@ -101,6 +105,7 @@ public class SettingController : MonoBehaviour
         }
         
         ApplySetting();
+        InitSettingPanel();
     }
 
     public void ApplySetting()
@@ -112,5 +117,10 @@ public class SettingController : MonoBehaviour
         else if (currentSetting.general.screen == "Windowed") screenMode = FullScreenMode.Windowed;
         else screenMode = FullScreenMode.MaximizedWindow;
         Screen.SetResolution(int.Parse(resolutionData[0]), int.Parse(resolutionData[1]), screenMode);
+    }
+
+    private void InitSettingPanel()
+    {
+        InitResolution();
     }
 }

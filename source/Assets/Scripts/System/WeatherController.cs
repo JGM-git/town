@@ -22,7 +22,7 @@ public class WeatherController : MonoBehaviour
     public List<WeatherData> weathers = new List<WeatherData>();
 
     public WeatherData currentWeather;
-    private MainSystem mainSystem;
+    private GameManager gameManager;
     private UIManager uiManager;
     private WeatherEffect weatherEffect;
 
@@ -31,7 +31,7 @@ public class WeatherController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        mainSystem = FindObjectOfType<MainSystem>();
+        gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
         weatherEffect = FindObjectOfType<WeatherEffect>();
         PlayerWeather(weathers[0]);
