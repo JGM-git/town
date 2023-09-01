@@ -67,6 +67,11 @@ public class KeyController : MonoBehaviour
             questManager.AddQuest();
             questManager.CheckCurrentQuest();
         }
+        // T - DRIVING ANIMATION TEST
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            moveController.DriveTest();
+        }
         // ESC - MENU
         if(Input.GetKeyDown(KeyCode.Escape))
         {
