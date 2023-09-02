@@ -11,6 +11,12 @@ public class Detector : MonoBehaviour
     /// </summary>
     public Collider detected;
     public List<String> InteractableTag;
+    private PlayerManager playerManager;
+
+    void Start()
+    {
+        playerManager = transform.parent.GetComponent<PlayerManager>();
+    }
     
     private void OnTriggerEnter(Collider other)
     {
@@ -42,7 +48,8 @@ public class Detector : MonoBehaviour
 
         if (detected.tag == "Car")
         {
-            detected.GetComponent<Car>().GetOn(transform.parent);
+            if(playerManager.isDriving) detected.GetComponent<Car>().GetOff(transform.parent);
+            else detected.GetComponent<Car>().GetOn(transform.parent);
         }
     }
 

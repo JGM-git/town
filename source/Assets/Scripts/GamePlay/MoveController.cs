@@ -32,6 +32,8 @@ public class MoveController : MonoBehaviour
 
     void Update()
     {
+        if (playerManager.isDriving) return;
+        
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
