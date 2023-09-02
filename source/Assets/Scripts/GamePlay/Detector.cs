@@ -39,6 +39,11 @@ public class Detector : MonoBehaviour
         {
             detected.GetComponent<NpcManager>().NpcStop();
         }
+
+        if (detected.tag == "Car")
+        {
+            detected.GetComponent<Car>().GetOn(transform.parent);
+        }
     }
 
 }
