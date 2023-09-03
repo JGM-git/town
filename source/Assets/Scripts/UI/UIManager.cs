@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text LifeText;
     [Header("ETC")]
     public Slider StaminaSlider;
+    public GameObject CarSpeedText;
 
     public Image StaminaImage;
     public GameObject QuitPanel;
@@ -60,6 +61,7 @@ public class UIManager : MonoBehaviour
     public bool settingOpened = false;
     public bool quitOpened = false;
     public bool equipOpened = false;
+    public bool speedOpened = false;
 
     public Color CanRun;
     public Color CannotRun;
@@ -94,6 +96,12 @@ public class UIManager : MonoBehaviour
     /// CUSTOM FUNCTIONS
     /// </summary>
 
+    public void ManageSpeedText()
+    {
+        speedOpened = !settingOpened;
+        CarSpeedText.SetActive(speedOpened);
+    }
+    
     private void StaminaBar()
     {
         StaminaSlider.value = Mathf.Lerp(StaminaSlider.value, playerManager.stamina / playerManager.maxStamina, Time.deltaTime);

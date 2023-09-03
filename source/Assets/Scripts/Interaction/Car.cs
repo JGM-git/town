@@ -9,10 +9,11 @@ public class Car : MonoBehaviour
     /// VARIABLES
     /// </summary>
     public Transform Seat;
+    private UIManager ui;
     
     void Start()
     {
-        
+        ui = FindObjectOfType<UIManager>();
     }
 
     public void GetOn(Transform target)
@@ -23,6 +24,7 @@ public class Car : MonoBehaviour
         ResetAgentPath(target);
         ChangeToDriveAnim(target);
         target.GetComponent<PlayerManager>().isDriving = true;
+        ui.ManageSpeedText();
     }
 
     public void GetOff(Transform target)
@@ -31,6 +33,7 @@ public class Car : MonoBehaviour
         target.position = Seat.position + Vector3.left * 2f;
         ChangeToDriveAnim(target);
         target.GetComponent<PlayerManager>().isDriving = false;
+        ui.ManageSpeedText();
     }
 
     private void ChangeToDriveAnim(Transform target)
