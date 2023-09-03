@@ -9,11 +9,13 @@ public class KeyController : MonoBehaviour
     /// VARIABLES
     /// </summary>
     private UIManager ui;
+
     private MoveController moveController;
     private CameraScroll cameraScroll;
     private Detector detector;
     private QuestManager questManager;
     private NpcManager npcManager;
+    private GameManager gameManager;
     private PlayerManager playerManager;
 
     /// <summary>
@@ -28,66 +30,71 @@ public class KeyController : MonoBehaviour
         detector = FindObjectOfType<Detector>();
         questManager = FindObjectOfType<QuestManager>();
         npcManager = FindObjectOfType<NpcManager>();
+        gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
     }
-    
+
     void Update()
     {
         // S - INFO OPEN
-        if(Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageInfo();
         }
+
         // Q - QUEST OPEN
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageQuest();
         }
+
         // E - INVEN OPEN
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageInven();
         }
+
         // F - INTERACTION
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             detector.DetectAction();
         }
+
         // U - EQUIPMENT OPEN
         if (Input.GetKeyDown(KeyCode.U))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageEquip();
         }
+
         // H - QUEST INTERACTION    
-        if(Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             questManager.GetQuestIndex();
             questManager.AddQuest();
             questManager.CheckCurrentQuest();
         }
-        // T - DRIVING ANIMATION TEST
-        if (Input.GetKeyDown(KeyCode.T))
+        // G - TALK TEST
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            moveController.DriveTest();
+            gameManager.Talk(1000);
         }
         // ESC - MENU
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             // CLOSE WINDOW
-            if(ui.windowStack.Count > 0)
+            if (ui.windowStack.Count > 0)
             {
                 ui.windowStack.Peek().Invoke();
-                 return;
+                return;
             }
             // OPEN SETTING
-            if(ui.quitOpened) return;  
+            if (ui.quitOpened) return;
             ui.ManageSetting();
         }
-        
         // SHIFT - RUN / CAR HEADLIGHT
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -99,11 +106,9 @@ public class KeyController : MonoBehaviour
             
             moveController.Run();
         }
-        
         // SCROLL - CAMERA ZOOM
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         cameraScroll.Zoom(scroll);
-        
         // WHEEL BUTTON - RESET CAMERA ZOOM
         if (Input.GetMouseButtonDown(2))
         {
