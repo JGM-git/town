@@ -7,7 +7,6 @@ public class QuestManager : MonoBehaviour
     public int questId;
     public int[] currentQuestId;
     public NpcManager npcManager;
-
     public Dictionary<int, QuestData> questList;
     public Dictionary<int, QuestData> playerQuestList;
     // Start is called before the first frame update
@@ -20,8 +19,9 @@ public class QuestManager : MonoBehaviour
 
     public void GenerateQuestData()
     {
-        questList.Add(questId = 10, new QuestData("¾î¼­¿À¼¼¿ä", new int[0]));
-        questList.Add(questId = 20, new QuestData("¾È³çÈ÷°¡¼¼¿ä", new int[0]));
+        questList.Add(questId = 10, new QuestData("ï¿½î¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", new int[0]));
+        questList.Add(questId = 20, new QuestData("ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", new int[0]));
+        
     }
 
     public void GetQuestIndex()
@@ -33,9 +33,9 @@ public class QuestManager : MonoBehaviour
 
     }
 
-    public void AddQuest() //ÇöÀç Äù½ºÆ® ¸®½ºÆ®¿¡ Ãß°¡
+    public void AddQuest() //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
     {
-        //questList¿¡¼­ questId·Î Á¶È¸ÇÑ ÈÄ¿¡ playerQuestList¿¡ Ãß°¡ 
+        //questListï¿½ï¿½ï¿½ï¿½ questIdï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½Ä¿ï¿½ playerQuestListï¿½ï¿½ ï¿½ß°ï¿½ 
         QuestData qd = questList[questId];
         playerQuestList.Add(questId, qd);
     }
@@ -43,7 +43,7 @@ public class QuestManager : MonoBehaviour
     public bool CompleteQuest()
     {
         return playerQuestList.Remove(npcManager.questId);
-        // º¸»ó Áö±Þ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     public Dictionary<int, QuestData> CheckCurrentQuest()
@@ -53,7 +53,7 @@ public class QuestManager : MonoBehaviour
 
     public void AbandonQuest()
     {
-        //Äù½ºÆ® UI¿¡¼­ »èÁ¦ ¹öÆ° Å¬¸¯½Ã Äù½ºÆ® Æ÷±â (playerQusetList¿¡¼­ »èÁ¦)
+        //ï¿½ï¿½ï¿½ï¿½Æ® UIï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ (playerQusetListï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     }
 
 
