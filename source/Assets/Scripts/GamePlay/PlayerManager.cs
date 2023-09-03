@@ -21,8 +21,13 @@ public class PlayerManager : MonoBehaviour
     public List<StatusEffect> statusEffects;
 
     public bool isDriving = false;
+    public Car currentCar;
 
     private Animator anim;
+    
+    /// <summary>
+    /// EVENT FUNCTIONS
+    /// </summary>
     
     void Start()
     {

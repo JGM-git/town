@@ -14,6 +14,7 @@ public class KeyController : MonoBehaviour
     private Detector detector;
     private QuestManager questManager;
     private NpcManager npcManager;
+    private PlayerManager playerManager;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -27,6 +28,7 @@ public class KeyController : MonoBehaviour
         detector = FindObjectOfType<Detector>();
         questManager = FindObjectOfType<QuestManager>();
         npcManager = FindObjectOfType<NpcManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
     
     void Update()
@@ -86,9 +88,15 @@ public class KeyController : MonoBehaviour
             ui.ManageSetting();
         }
         
-        // SHIFT - RUN
+        // SHIFT - RUN / CAR HEADLIGHT
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
+            if (playerManager.isDriving && playerManager.currentCar != null)
+            {
+                playerManager.currentCar.ManageLight();
+                return;
+            }
+            
             moveController.Run();
         }
         

@@ -9,7 +9,11 @@ public class Car : MonoBehaviour
     /// VARIABLES
     /// </summary>
     public Transform Seat;
+    public GameObject HeadLight;
+    public PrometeoCarController controller;
     private UIManager ui;
+
+    private bool lightTurned = false;
     
     void Start()
     {
@@ -24,7 +28,9 @@ public class Car : MonoBehaviour
         ResetAgentPath(target);
         ChangeToDriveAnim(target);
         target.GetComponent<PlayerManager>().isDriving = true;
+        target.GetComponent<PlayerManager>().currentCar = this;
         ui.ManageSpeedText();
+        controller.enabled = true;
     }
 
     public void GetOff(Transform target)
@@ -33,7 +39,9 @@ public class Car : MonoBehaviour
         target.position = Seat.position + Vector3.left * 2f;
         ChangeToDriveAnim(target);
         target.GetComponent<PlayerManager>().isDriving = false;
+        target.GetComponent<PlayerManager>().currentCar = null;
         ui.ManageSpeedText();
+        controller.enabled = false;
     }
 
     private void ChangeToDriveAnim(Transform target)
@@ -46,5 +54,11 @@ public class Car : MonoBehaviour
     private void ResetAgentPath(Transform target)
     {
         target.GetComponent<NavMeshAgent>().ResetPath();
+    }
+
+    public void ManageLight()
+    {
+        lightTurned = !lightTurned;
+        HeadLight.SetActive(lightTurned);
     }
 }
