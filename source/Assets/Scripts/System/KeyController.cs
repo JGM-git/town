@@ -9,6 +9,7 @@ public class KeyController : MonoBehaviour
     /// VARIABLES
     /// </summary>
     private UIManager ui;
+
     private MoveController moveController;
     private CameraScroll cameraScroll;
     private Detector detector;
@@ -30,38 +31,43 @@ public class KeyController : MonoBehaviour
         npcManager = FindObjectOfType<NpcManager>();
         gameManager = FindObjectOfType<GameManager>();
     }
-    
+
     void Update()
     {
         // S - INFO OPEN
-        if(Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageInfo();
         }
+
         // Q - QUEST OPEN
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageQuest();
         }
+
         // E - INVEN OPEN
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageInven();
         }
+
         // F - INTERACTION
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             detector.DetectAction();
         }
+
         // U - EQUIPMENT OPEN
         if (Input.GetKeyDown(KeyCode.U))
         {
-            if(ui.settingOpened) return;
+            if (ui.settingOpened) return;
             ui.ManageEquip();
         }
+
         // H - QUEST INTERACTION    
         if (Input.GetKeyDown(KeyCode.H))
         {
@@ -69,39 +75,50 @@ public class KeyController : MonoBehaviour
             questManager.AddQuest();
             questManager.CheckCurrentQuest();
         }
+
         // G - TALK TEST
         if (Input.GetKeyDown(KeyCode.G))
         {
             gameManager.Talk(1000);
-        }
-        // ESC - MENU
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            // CLOSE WINDOW
-            if(ui.windowStack.Count > 0)
+
+            // T - DRIVING ANIMATION TEST
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                ui.windowStack.Peek().Invoke();
-                 return;
+                moveController.DriveTest();
+
             }
-            // OPEN SETTING
-            if(ui.quitOpened) return;  
-            ui.ManageSetting();
-        }
-        
-        // SHIFT - RUN
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            moveController.Run();
-        }
-        
-        // SCROLL - CAMERA ZOOM
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        cameraScroll.Zoom(scroll);
-        
-        // WHEEL BUTTON - RESET CAMERA ZOOM
-        if (Input.GetMouseButtonDown(2))
-        {
-            cameraScroll.Reset();
+
+            // ESC - MENU
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                // CLOSE WINDOW
+                if (ui.windowStack.Count > 0)
+                {
+                    ui.windowStack.Peek().Invoke();
+                    return;
+                }
+
+                // OPEN SETTING
+                if (ui.quitOpened) return;
+                ui.ManageSetting();
+            }
+
+            // SHIFT - RUN
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                moveController.Run();
+            }
+
+            // SCROLL - CAMERA ZOOM
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            cameraScroll.Zoom(scroll);
+
+            // WHEEL BUTTON - RESET CAMERA ZOOM
+            if (Input.GetMouseButtonDown(2))
+            {
+                cameraScroll.Reset();
+            }
         }
     }
 }
+

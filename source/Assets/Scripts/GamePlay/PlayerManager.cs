@@ -20,6 +20,8 @@ public class PlayerManager : MonoBehaviour
     public float maxStamina;
     public List<StatusEffect> statusEffects;
 
+    public bool isDriving = false;
+
     private Animator anim;
     
     void Start()

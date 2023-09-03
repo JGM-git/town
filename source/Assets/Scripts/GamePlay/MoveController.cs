@@ -32,6 +32,8 @@ public class MoveController : MonoBehaviour
 
     void Update()
     {
+        if (playerManager.isDriving) return;
+        
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -104,8 +106,6 @@ public class MoveController : MonoBehaviour
 
     public void Run()
     {
-       
-
         if (anim.GetBool("isWalking"))
         {
             bool isRun = anim.GetBool("isRun");
@@ -116,5 +116,10 @@ public class MoveController : MonoBehaviour
             anim.SetFloat("Blend", blend);
             agent.speed = blend == 1 ? 3f : 1f;
         }
+    }
+
+    public void DriveTest()
+    {
+        anim.SetTrigger("drive");
     }
 }
