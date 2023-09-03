@@ -14,6 +14,7 @@ public class KeyController : MonoBehaviour
     private Detector detector;
     private QuestManager questManager;
     private NpcManager npcManager;
+    private GameManager gameManager;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -27,6 +28,7 @@ public class KeyController : MonoBehaviour
         detector = FindObjectOfType<Detector>();
         questManager = FindObjectOfType<QuestManager>();
         npcManager = FindObjectOfType<NpcManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
     
     void Update()
@@ -38,13 +40,13 @@ public class KeyController : MonoBehaviour
             ui.ManageInfo();
         }
         // Q - QUEST OPEN
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if(ui.settingOpened) return;
             ui.ManageQuest();
         }
         // E - INVEN OPEN
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if(ui.settingOpened) return;
             ui.ManageInven();
@@ -61,11 +63,16 @@ public class KeyController : MonoBehaviour
             ui.ManageEquip();
         }
         // H - QUEST INTERACTION    
-        if(Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             questManager.GetQuestIndex();
             questManager.AddQuest();
             questManager.CheckCurrentQuest();
+        }
+        // G - TALK TEST
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            gameManager.Talk(1000);
         }
         // ESC - MENU
         if(Input.GetKeyDown(KeyCode.Escape))
