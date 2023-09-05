@@ -82,6 +82,12 @@ public class KeyController : MonoBehaviour
         {
             gameManager.Talk(1000);
         }
+        // O - ACHIEVEMENT
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (ui.settingOpened) return;
+            ui.ManageAchieve();
+        }
         // ESC - MENU
         if (Input.GetKeyDown(KeyCode.Escape))
         {
