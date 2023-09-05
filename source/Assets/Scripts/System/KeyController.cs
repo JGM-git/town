@@ -73,14 +73,12 @@ public class KeyController : MonoBehaviour
         // H - QUEST INTERACTION    
         if (Input.GetKeyDown(KeyCode.H))
         {
-            questManager.GetQuestIndex();
-            questManager.AddQuest();
-            questManager.CheckCurrentQuest();
+
         }
         // G - TALK TEST
         if (Input.GetKeyDown(KeyCode.G))
         {
-            gameManager.Talk(1000);
+            
         }
         // ESC - MENU
         if (Input.GetKeyDown(KeyCode.Escape))

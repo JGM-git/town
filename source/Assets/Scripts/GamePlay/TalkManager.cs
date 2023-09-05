@@ -5,22 +5,27 @@ using UnityEngine;
 
 public class TalkManager : MonoBehaviour
 {
-    Dictionary<int, string[]> talkData;
+    public NpcManager npcManager;
+    public Talk talk;
 
     // Start is called before the first frame update
     void Start()
     {
-        talkData = new Dictionary<int, string[]>();
-        GenerateData();
+        npcManager = FindObjectOfType<NpcManager>();
     }
 
     public void GenerateData()
     {
-        talkData.Add(1000, new string[] { "���� x��"} );
+
     }
 
-    public string GetTalk(int id, int talkingIndex)
+    public void GetTalk()
     {
-        return talkData[id][talkingIndex];
+        talk = npcManager.talk;
+    }
+
+    public void Talking()
+    {
+        Debug.Log(talk.line[0]);
     }
 }

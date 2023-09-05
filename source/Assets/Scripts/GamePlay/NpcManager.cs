@@ -9,7 +9,8 @@ public class NpcManager : MonoBehaviour
     private GameObject target;
     public int npcId;
     public int questId;
-    public bool quest; //퀘스트가 있는 npc인지 없는 npc인지
+    public Quest quest;
+    public Talk talk;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -31,8 +32,9 @@ public class NpcManager : MonoBehaviour
         anim.SetBool("isTalking", false);
     }
 
-    public void NpcStop()
+    public void TalkAction()
     {
         StartCoroutine (NpcTalk());
     }
+    
 }

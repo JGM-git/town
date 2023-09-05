@@ -12,10 +12,16 @@ public class Detector : MonoBehaviour
     public Collider detected;
     public List<String> InteractableTag;
     private PlayerManager playerManager;
+    private QuestManager questManager;
+    private NpcManager npcManager;
+    private TalkManager talkManager;
 
     void Start()
     {
         playerManager = transform.parent.GetComponent<PlayerManager>();
+        questManager = FindObjectOfType<QuestManager>();
+        npcManager = FindObjectOfType<NpcManager>();
+        talkManager = FindObjectOfType<TalkManager>();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -43,7 +49,10 @@ public class Detector : MonoBehaviour
 
         if (detected.tag == "Npc")
         {
-            detected.GetComponent<NpcManager>().NpcStop();
+            detected.GetComponent<NpcManager>().TalkAction();
+            questManager.AddQuest();
+            talkManager.GetTalk();
+            talkManager.Talking();
         }
 
         if (detected.tag == "Car")

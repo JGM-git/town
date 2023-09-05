@@ -114,16 +114,5 @@ public class GameManager : MonoBehaviour
     
     // TALKING
     
-    public void Talk(int id)
-    {
-        string talkData = talkManager.GetTalk(id, talkingIndex);
-        isTalking = true;
-        if (talkData == null)
-        {
-            isTalking = false;
-            talkingIndex = 0;
-        }
-        
-        talkingIndex++;
-    }
+
 }
