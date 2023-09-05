@@ -36,57 +36,10 @@ public class KeyController : MonoBehaviour
 
     void Update()
     {
-        // S - INFO OPEN
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (ui.settingOpened) return;
-            ui.ManageInfo();
-        }
-
-        // Q - QUEST OPEN
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (ui.settingOpened) return;
-            ui.ManageQuest();
-        }
-
-        // E - INVEN OPEN
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (ui.settingOpened) return;
-            ui.ManageInven();
-        }
-
         // F - INTERACTION
         if (Input.GetKeyDown(KeyCode.F))
         {
             detector.DetectAction();
-        }
-
-        // U - EQUIPMENT OPEN
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            if (ui.settingOpened) return;
-            ui.ManageEquip();
-        }
-
-        // H - QUEST INTERACTION    
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            questManager.GetQuestIndex();
-            questManager.AddQuest();
-            questManager.CheckCurrentQuest();
-        }
-        // G - TALK TEST
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            gameManager.Talk(1000);
-        }
-        // O - ACHIEVEMENT
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            if (ui.settingOpened) return;
-            ui.ManageAchieve();
         }
         // ESC - MENU
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -119,6 +72,54 @@ public class KeyController : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             cameraScroll.Reset();
+        }
+        // H - QUEST INTERACTION    
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            questManager.GetQuestIndex();
+            questManager.AddQuest();
+            questManager.CheckCurrentQuest();
+        }
+        // G - TALK TEST
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            gameManager.Talk(1000);
+        }
+
+        if (playerManager.isDriving) return;
+        
+        // UI KEYS
+        // S - INFO OPEN
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (ui.settingOpened) return;
+            ui.ManageInfo();
+        }
+
+        // Q - QUEST OPEN
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (ui.settingOpened) return;
+            ui.ManageQuest();
+        }
+
+        // E - INVEN OPEN
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (ui.settingOpened) return;
+            ui.ManageInven();
+        }
+        // U - EQUIPMENT OPEN
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (ui.settingOpened) return;
+            ui.ManageEquip();
+        }
+        // O - ACHIEVEMENT OPEN
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (ui.settingOpened) return;
+            ui.ManageAchieve();
         }
     }
 }
