@@ -41,8 +41,7 @@ public class KeyController : MonoBehaviour
         {
             detector.DetectAction();
         }
-<<<<<<< HEAD
-
+        
         // U - EQUIPMENT OPEN
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -60,8 +59,6 @@ public class KeyController : MonoBehaviour
         {
             
         }
-=======
->>>>>>> 4413c4b19ee41d809bc9445ff1685ab5077eddbe
         // ESC - MENU
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -99,13 +96,8 @@ public class KeyController : MonoBehaviour
         {
             questManager.GetQuestIndex();
             questManager.AddQuest();
-            questManager.CheckCurrentQuest();
         }
-        // G - TALK TEST
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            gameManager.Talk(1000);
-        }
+
 
         if (playerManager.isDriving) return;
         
