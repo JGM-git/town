@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599ac19052bd9494e824e4bca4ee6c61, type: 3}
   m_Name: Talk1
   m_EditorClassIdentifier: 
-  talk: []
-  talkIndex: 
+  line:
+  - "\uBB34\uCC28\uC2A4 \uADF8\uB77C\uC2DC\uC544\uC2A4"
+  - "\uC544\uC2DC\uD53C\uC628 \uC5D0\uC2A4\uD1A0"
+  - "\uC5D0\uC2A4 \uD30C\uB77C \uBCF4\uC2A4\uC18C\uB974\uD1A0\uC2A4"
+  - SIUUUUUUUU
+  talkIndex: 3

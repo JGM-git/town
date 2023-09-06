@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac0501413eb7aa44825148438e85e4c, type: 3}
   m_Name: Quest1
   m_EditorClassIdentifier: 
-  questName: 
-  npcId: 0
+  questName: Cristiano Ronaldo
+  npcId: 7
+  reward: SIUUU
