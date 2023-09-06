@@ -7,6 +7,7 @@ public class TalkManager : MonoBehaviour
 {
     public NpcManager npcManager;
     public Talk talk;
+    public int talkIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ public class TalkManager : MonoBehaviour
 
     public void Talking()
     {
-        Debug.Log(talk.line[0]);
+        Debug.Log(talk.line[talkIndex]);
+        talkIndex++;
+        if (talkIndex == talk.talkIndex) talkIndex = 0;
     }
 }

@@ -52,7 +52,6 @@ public class Detector : MonoBehaviour
             detected.GetComponent<NpcManager>().TalkAction();
             questManager.AddQuest();
             talkManager.GetTalk();
-            talkManager.Talking();
         }
 
         if (detected.tag == "Car")

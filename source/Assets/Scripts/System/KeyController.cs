@@ -17,6 +17,7 @@ public class KeyController : MonoBehaviour
     private NpcManager npcManager;
     private GameManager gameManager;
     private PlayerManager playerManager;
+    private TalkManager talkManager;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -32,6 +33,7 @@ public class KeyController : MonoBehaviour
         npcManager = FindObjectOfType<NpcManager>();
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        talkManager = FindObjectOfType<TalkManager>();
     }
 
     void Update()
@@ -52,12 +54,12 @@ public class KeyController : MonoBehaviour
         // H - QUEST INTERACTION    
         if (Input.GetKeyDown(KeyCode.H))
         {
-
+            
         }
         // G - TALK TEST
         if (Input.GetKeyDown(KeyCode.G))
         {
-            
+            talkManager.Talking();
         }
         // ESC - MENU
         if (Input.GetKeyDown(KeyCode.Escape))
