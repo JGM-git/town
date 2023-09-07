@@ -9,8 +9,8 @@ public class QuestManager : MonoBehaviour
     public NpcManager npcManager;
     public Quest quest;
     
-    public Dictionary<int, QuestData> questList;
-    public Dictionary<int, QuestData> playerQuestList;
+    public Dictionary<int, Quest> questList;
+    public Dictionary<int, Quest> playerQuestList;
     // Start is called before the first frame update
     void Start()
     {

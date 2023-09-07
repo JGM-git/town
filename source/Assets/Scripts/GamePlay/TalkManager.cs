@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class TalkManager : MonoBehaviour
 {
+    /// <summary>
+    /// VARIABLES
+    /// </summary>
+    
     public NpcManager npcManager;
     public Talk talk;
     public int talkIndex = 0;
+    private UIManager uiManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         npcManager = FindObjectOfType<NpcManager>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     public void GenerateData()
@@ -27,6 +32,7 @@ public class TalkManager : MonoBehaviour
 
     public void Talking()
     {
+        uiManager.PrintDialog(talk.line[talkIndex]);
         Debug.Log(talk.line[talkIndex]);
         talkIndex++;
         if (talkIndex == talk.talkIndex) talkIndex = 0;

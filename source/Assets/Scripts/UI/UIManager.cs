@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
     [Header("ETC")]
     public Slider StaminaSlider;
     public GameObject CarSpeedText;
+    public GameObject Dialog;
+    public TMP_Text DialogText;
 
     public Image StaminaImage;
     public GameObject QuitPanel;
@@ -308,5 +310,14 @@ public class UIManager : MonoBehaviour
         ReputationText.text = playerManager.reputation.ToString();
         FaithText.text = playerManager.faith.ToString();
         LifeText.text = playerManager.life.ToString();
+    }
+
+    /// <summary>
+    /// DIALOG
+    /// </summary>
+
+    public void PrintDialog(string target)
+    {
+        DialogText.DOText(target, 1f);
     }
 }

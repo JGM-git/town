@@ -43,14 +43,6 @@ public class KeyController : MonoBehaviour
         {
             detector.DetectAction();
         }
-        
-        // U - EQUIPMENT OPEN
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            if (ui.settingOpened) return;
-            ui.ManageEquip();
-        }
-
         // H - QUEST INTERACTION    
         if (Input.GetKeyDown(KeyCode.H))
         {
