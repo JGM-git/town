@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour
     public bool quitOpened = false;
     public bool equipOpened = false;
     public bool speedOpened = false;
+    public bool dialogOpened = false;
 
     public Color CanRun;
     public Color CannotRun;
@@ -316,6 +317,12 @@ public class UIManager : MonoBehaviour
     /// DIALOG
     /// </summary>
 
+    public void ManageDialog()
+    {
+        dialogOpened = !dialogOpened;
+        Dialog.SetActive(dialogOpened);
+    }
+    
     public void PrintDialog(string target)
     {
         DialogText.DOText(target, 1f);

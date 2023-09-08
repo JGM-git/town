@@ -48,8 +48,8 @@ public class KeyController : MonoBehaviour
         {
             
         }
-        // G - TALK TEST
-        if (Input.GetKeyDown(KeyCode.G))
+        // SPACE - NEXT DIALOG
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             talkManager.Talking();
         }

@@ -28,6 +28,8 @@ public class TalkManager : MonoBehaviour
     public void GetTalk()
     {
         talk = npcManager.talk;
+        uiManager.ManageDialog();
+        Talking();
     }
 
     public void Talking()
