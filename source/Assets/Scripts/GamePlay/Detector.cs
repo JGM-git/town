@@ -59,6 +59,11 @@ public class Detector : MonoBehaviour
             if(playerManager.isDriving) detected.GetComponent<Car>().GetOff(transform.parent);
             else detected.GetComponent<Car>().GetOn(transform.parent);
         }
+
+        if (detected.tag == "Item")
+        {
+            Debug.Log("SIU");
+        }
     }
 
 }
