@@ -94,6 +94,11 @@ public class AchievementManager : MonoBehaviour
                     select i).Count();
         return Count;
     }
+
+    public int GetAllCount()
+    {
+        return AchievementList.Count;
+    }
     /// <summary>
     /// Returns the current percentage of unlocked achievements.
     /// </summary>

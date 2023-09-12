@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Defines the logic behind a single achievement on the UI
 /// </summary>
 public class UIAchievement : MonoBehaviour
 {
-    public Text Title, Description, Percent;
-    public Image Icon, OverlayIcon, ProgressBar;
+    public TMP_Text Title, Description;
+    public Image Icon, OverlayIcon;
     public GameObject SpoilerOverlay;
-    public Text SpoilerText;
+    public TMP_Text SpoilerText;
     [HideInInspector]public AchievenmentStack AS;
 
     /// <summary>
@@ -46,28 +47,6 @@ public class UIAchievement : MonoBehaviour
             else
             {
                 Icon.sprite = State.Achieved ? Information.AchievedIcon : Information.LockedIcon;
-            }
-
-            if (Information.Progression)
-            {
-                float CurrentProgress = AchievementManager.instance.ShowExactProgress ? State.Progress : (State.LastProgressUpdate * Information.NotificationFrequency);
-                float DisplayProgress = State.Achieved ? Information.ProgressGoal : CurrentProgress;
-
-                if (State.Achieved)
-                {
-                    Percent.text = Information.ProgressGoal + Information.ProgressSuffix + " / " + Information.ProgressGoal + Information.ProgressSuffix + " (Achieved)";
-                }
-                else
-                {
-                    Percent.text = DisplayProgress + Information.ProgressSuffix +  " / " + Information.ProgressGoal + Information.ProgressSuffix;
-                }
-
-                ProgressBar.fillAmount = DisplayProgress / Information.ProgressGoal;
-            }
-            else //Single Time
-            {
-                ProgressBar.fillAmount = State.Achieved ? 1 : 0;
-                Percent.text = State.Achieved ? "(Achieved)" : "(Locked)";
             }
         }
     }

@@ -344,7 +344,7 @@ public class UIManager : MonoBehaviour
         foreach (Transform child in scrollContent.transform)
             Destroy(child.gameObject);
         AchievementManager achievementManager = AchievementManager.instance;
-        int count = achievementManager.GetAchievedCount();
+        int count = achievementManager.GetAllCount();
         for (int i = 0; i < count; i++)
         {
             if((Filter.Equals("All")) || (Filter.Equals("Achieved") && achievementManager.States[i].Achieved) || (Filter.Equals("Unachieved") && !achievementManager.States[i].Achieved))
