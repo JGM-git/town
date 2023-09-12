@@ -46,6 +46,13 @@ public class UIManager : MonoBehaviour
     public GameObject achievePrefab;
     public CustomDropdown achieveFilter;
     public Scrollbar achieveScroll;
+    [Header("Inventory")]
+    public Transform invenContent;
+    public RectTransform backgroundRect;
+    public RectTransform slotRect;
+    public GameObject slotPrefab;
+    public TMP_Text weightText;
+    public int slotPerLine = 7;
     [Header("ETC")]
     public Slider StaminaSlider;
     public GameObject CarSpeedText;
@@ -60,6 +67,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private GameManager gameManager;
     private PlayerManager playerManager;
+    private Inventory inven;
 
     public bool infoOpened = false;
     public bool invenOpened = false;
@@ -92,6 +100,7 @@ public class UIManager : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        inven = FindObjectOfType<Inventory>();
         RefreshMoney();
         RefreshTime();
     }
@@ -201,6 +210,7 @@ public class UIManager : MonoBehaviour
         invenOpened = !invenOpened;
         if(invenOpened)
         {
+            RefreshInven();
             PanelOpenAnim(InvenPanel);
             windowStack.Push(ManageInven);
         }
@@ -366,5 +376,35 @@ public class UIManager : MonoBehaviour
     public void ChangeFilter()
     {
         RefreshAchieve(achieveFilter.selectedText.text);
+    }
+    
+    /// <summary>
+    /// INVENTORY
+    /// </summary>
+    public void RefreshInven()
+    {
+        foreach (Transform child in invenContent)
+            Destroy(child.gameObject);
+        
+        ResizeInven();
+        for (int i = 0; i < inven.slotCount; i++)
+        {
+            GameObject slot = Instantiate(slotPrefab, invenContent);
+            slot.transform.SetParent(invenContent);
+        }
+    }
+
+    public void ResizeInven()
+    {
+        int verticalSize = DivideSlotCount(inven.slotCount) * 70 + 20;
+        slotRect.sizeDelta = new Vector2(510, verticalSize);
+        slotRect.anchoredPosition =
+            new Vector2(slotRect.anchoredPosition.x, 130f + (DivideSlotCount(inven.slotCount) - 3) * 35f);
+        backgroundRect.sizeDelta = new Vector2(540, verticalSize + 150);
+    }
+
+    private int DivideSlotCount(int target)
+    {
+        return (target % 7 == 0) ? target / 7 : target / 7 + 1;
     }
 }

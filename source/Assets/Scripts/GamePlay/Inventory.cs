@@ -7,10 +7,11 @@ public class Inventory : MonoBehaviour
 {
     // Start is called before the first frame update
     public ItemData[] inven;
+    public int slotCount;
     public int count;
     void Start()
     {
-        inven = new ItemData[10];
+        inven = new ItemData[slotCount];
         count = 0;
     }
 
