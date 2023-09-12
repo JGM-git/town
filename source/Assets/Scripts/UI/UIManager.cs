@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Michsky.MUIP;
 using TMPro;
 using DG.Tweening;
 
@@ -40,6 +41,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text ReputationText;
     public TMP_Text FaithText;
     public TMP_Text LifeText;
+    [Header("Achievements")]
+    public GameObject scrollContent;
+    public GameObject achievePrefab;
+    public CustomDropdown achieveFilter;
+    public Scrollbar achieveScroll;
     [Header("ETC")]
     public Slider StaminaSlider;
     public GameObject CarSpeedText;
@@ -179,6 +185,7 @@ public class UIManager : MonoBehaviour
         if(achieveOpened)
         {
             PanelOpenAnim(AchievePanel);
+            RefreshAchieve("All");
             windowStack.Push(ManageAchieve);
         }
         else
@@ -326,5 +333,38 @@ public class UIManager : MonoBehaviour
     public void PrintDialog(string target)
     {
         DialogText.DOText(target, 1f);
+    }
+
+    /// <summary>
+    /// Achievements
+    /// </summary>
+
+    public void RefreshAchieve(string Filter)
+    {
+        foreach (Transform child in scrollContent.transform)
+            Destroy(child.gameObject);
+        AchievementManager achievementManager = AchievementManager.instance;
+        int count = achievementManager.GetAllCount();
+        for (int i = 0; i < count; i++)
+        {
+            if((Filter.Equals("All")) || (Filter.Equals("Achieved") && achievementManager.States[i].Achieved) || (Filter.Equals("Unachieved") && !achievementManager.States[i].Achieved))
+            {
+                AddAchievementToUI(achievementManager.AchievementList[i], achievementManager.States[i]);
+            }
+        }
+
+        achieveScroll.value = 1;
+    }
+    
+    public void AddAchievementToUI(AchievementInfromation Achievement, AchievementState State)
+    {
+        UIAchievement UIAchievement = Instantiate(achievePrefab, new Vector3(0f, 0f, 0f), Quaternion.identity).GetComponent<UIAchievement>();
+        UIAchievement.Set(Achievement, State);
+        UIAchievement.transform.SetParent(scrollContent.transform);
+    }
+    
+    public void ChangeFilter()
+    {
+        RefreshAchieve(achieveFilter.selectedText.text);
     }
 }

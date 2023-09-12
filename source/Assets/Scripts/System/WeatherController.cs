@@ -34,7 +34,7 @@ public class WeatherController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
         weatherEffect = FindObjectOfType<WeatherEffect>();
-        PlayerWeather(weathers[5]);
+        PlayerWeather(weathers[0]);
     }
 
     /// <summary>
