@@ -40,7 +40,10 @@ public class MoveController : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
                 if (Vector3.Distance(hit.point, transform.position) < moveLimit)
+                {
+                    Debug.Log("1234");
                     return;
+                }
                 Spot.gameObject.SetActive(true);
                 Spot.position = hit.point + Vector3.up * 0.1f;
                 SpotAnimation();
@@ -51,7 +54,7 @@ public class MoveController : MonoBehaviour
                 agent.SetDestination(hit.point);
             }
         }
-        else if (agent.remainingDistance < 0.4f)
+        else if (agent.remainingDistance < 0.2f)
         {
             Spot.gameObject.SetActive(false);
             anim.SetBool("isWalking", false);

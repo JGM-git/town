@@ -15,6 +15,7 @@ public class Detector : MonoBehaviour
     private QuestManager questManager;
     private NpcManager npcManager;
     private TalkManager talkManager;
+    private Inventory inventory;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Detector : MonoBehaviour
         questManager = FindObjectOfType<QuestManager>();
         npcManager = FindObjectOfType<NpcManager>();
         talkManager = FindObjectOfType<TalkManager>();
+        inventory = FindObjectOfType<Inventory>();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -62,7 +64,7 @@ public class Detector : MonoBehaviour
 
         if (detected.tag == "Item")
         {
-            Debug.Log("SIU");
+            inventory.GetItem(detected.GetComponent<Item>().itemData);
         }
     }
 
