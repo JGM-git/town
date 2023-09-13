@@ -51,4 +51,9 @@ public class PlayerManager : MonoBehaviour
                 stamina += Time.deltaTime * 5f;
         }
     }
+
+    public float GetWeightPercent()
+    {
+        return weight / maxWeight * 100f;
+    }
 }

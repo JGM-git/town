@@ -399,6 +399,7 @@ public class UIManager : MonoBehaviour
             if(i < invenKeys.Count)
                 inven.GenerateIcon(invenKeys[i], slotArr[i]);
         }
+        weightText.text = string.Format("Weight {0}%", Math.Round(playerManager.GetWeightPercent(), 2));
     }
 
     public void ResizeInven()
