@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
 {
     // Start is called before the first frame update
     public ItemData itemData;
+    public int count;
     public bool isGet;
     void Start()
     {

@@ -7,12 +7,15 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEditor.Localization.Plugins.XLIFF.V12;
 
+[System.Serializable]
+public class Inven : SerializableDictionary<ItemData, int> { }
+
 public class Inventory : MonoBehaviour
 {
     /// <summary>
     /// VARIABLES
     /// </summary>
-    public ItemData[] inven;
+    public Inven inven;
     public int slotCount;
     public int idx;
 
@@ -24,25 +27,24 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         ui = FindObjectOfType<UIManager>();
-        inven = new ItemData[slotCount];
         idx = 0;
     }
 
-    public void GetItem(ItemData itemData)
+    public void GetItem(ItemData itemData, int count)
     {
         // 먼저 검색해서 있으면 그 슬롯에 개수만 더하기
-        int targetIdx = SearchItem(itemData);
-        if (targetIdx > -1 && inven[targetIdx].stackable)
-        {
-            inven[targetIdx].quantity += itemData.quantity;
-            ui.RefreshInven();
-            return;
-        }
+        if (inven.ContainsKey(itemData))
+            if (itemData.stackable)
+            {
+                inven[itemData] += count;
+                ui.RefreshInven();
+                return;
+            }
         
         // 남은 슬롯이 있으면 새로 추가
-        if (idx < inven.Length)
+        if (idx < slotCount)
         {
-            inven[idx] = itemData;
+            inven.Add(itemData, count);
             idx++;
             ui.RefreshInven();
         }
@@ -52,23 +54,15 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public int SearchItem(ItemData target)
-    {
-        for (int i = 0; i < idx; i++)
-            if (inven[i].itemName == target.itemName) return i;
-        
-        return -1;
-    }
-
     public void GenerateIcon(ItemData target, GameObject slot)
     {
         GetSlotIcon(slot).sprite = target.sprite;
 
         if (target.stackable)
         {
-            if (target.quantity >= 2)
+            if (inven[target] >= 2)
             {
-                GetSlotText(slot).text = target.quantity.ToString();
+                GetSlotText(slot).text = inven[target].ToString();
             }
         }
     }

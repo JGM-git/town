@@ -8,7 +8,7 @@ public class ItemData : ScriptableObject
     public string itemName;
     public Sprite sprite;
     public bool equip;
-    public int quantity;
+    public float weight;
     public bool stackable;
     public bool usable;
 }

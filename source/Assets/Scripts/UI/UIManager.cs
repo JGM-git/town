@@ -389,13 +389,15 @@ public class UIManager : MonoBehaviour
         
         ResizeInven();
         slotArr = new GameObject[inven.slotCount];
+
+        List<ItemData> invenKeys = new List<ItemData>(inven.inven.Keys);
         for (int i = 0; i < inven.slotCount; i++)
         {
             slotArr[i] = Instantiate(slotPrefab, invenContent);
             slotArr[i].transform.SetParent(invenContent);
             
-            if(inven.inven[i] != null)
-                inven.GenerateIcon(inven.inven[i], slotArr[i]);
+            if(i < invenKeys.Count)
+                inven.GenerateIcon(invenKeys[i], slotArr[i]);
         }
     }
 

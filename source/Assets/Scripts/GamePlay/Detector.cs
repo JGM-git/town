@@ -64,7 +64,8 @@ public class Detector : MonoBehaviour
 
         if (detected.tag == "Item")
         {
-            inventory.GetItem(detected.GetComponent<Item>().itemData);
+            Item detectedItem = detected.GetComponent<Item>();
+            inventory.GetItem(detectedItem.itemData, detectedItem.count);
         }
     }
 
