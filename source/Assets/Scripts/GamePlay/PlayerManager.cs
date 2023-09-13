@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour
     public int life;
     public float stamina;
     public float maxStamina;
+    public float weight;
+    public float maxWeight;
     public List<StatusEffect> statusEffects;
 
     public bool isDriving = false;
