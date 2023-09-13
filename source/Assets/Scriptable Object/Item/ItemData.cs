@@ -10,4 +10,5 @@ public class ItemData : ScriptableObject
     public bool equip;
     public int quantity;
     public bool stackable;
+    public bool usable;
 }

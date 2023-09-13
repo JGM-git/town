@@ -53,6 +53,7 @@ public class UIManager : MonoBehaviour
     public GameObject slotPrefab;
     public TMP_Text weightText;
     public int slotPerLine = 7;
+    public GameObject[] slotArr;
     [Header("ETC")]
     public Slider StaminaSlider;
     public GameObject CarSpeedText;
@@ -387,10 +388,14 @@ public class UIManager : MonoBehaviour
             Destroy(child.gameObject);
         
         ResizeInven();
+        slotArr = new GameObject[inven.slotCount];
         for (int i = 0; i < inven.slotCount; i++)
         {
-            GameObject slot = Instantiate(slotPrefab, invenContent);
-            slot.transform.SetParent(invenContent);
+            slotArr[i] = Instantiate(slotPrefab, invenContent);
+            slotArr[i].transform.SetParent(invenContent);
+            
+            if(inven.inven[i] != null)
+                inven.GenerateIcon(inven.inven[i], slotArr[i]);
         }
     }
 
