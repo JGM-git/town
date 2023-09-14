@@ -16,6 +16,7 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     private float moveLimit = 2f;
     public Transform Spot;
+    public LayerMask layerMask;
     
     /// <summary>
     /// EVENT FUNCTIONS
@@ -37,13 +38,8 @@ public class MoveController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~layerMask))
             {
-                if (Vector3.Distance(hit.point, transform.position) < moveLimit)
-                {
-                    Debug.Log("1234");
-                    return;
-                }
                 Spot.gameObject.SetActive(true);
                 Spot.position = hit.point + Vector3.up * 0.1f;
                 SpotAnimation();
