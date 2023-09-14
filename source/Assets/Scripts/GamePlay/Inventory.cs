@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
     public int idx;
 
     private UIManager ui;
+    private PlayerManager playerManager;
     
     /// <summary>
     /// EVENT FUNCTIONS
@@ -27,6 +28,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         ui = FindObjectOfType<UIManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
         idx = 0;
     }
 
@@ -37,6 +39,7 @@ public class Inventory : MonoBehaviour
             if (itemData.stackable)
             {
                 inven[itemData] += count;
+                playerManager.weight += itemData.weight * count;
                 ui.RefreshInven();
                 return;
             }
@@ -45,6 +48,7 @@ public class Inventory : MonoBehaviour
         if (idx < slotCount)
         {
             inven.Add(itemData, count);
+            playerManager.weight += itemData.weight * count;
             idx++;
             ui.RefreshInven();
         }

@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Soccer Ball
   sprite: {fileID: 21300000, guid: 6c231bbded82eb3489c28fb1815f101c, type: 3}
   equip: 0
-  quantity: 1
+  weight: 2.5
   stackable: 1
   usable: 0
