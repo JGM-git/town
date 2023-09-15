@@ -5,5 +5,10 @@ public class Quest : ScriptableObject
 {
     public string questName;
     public int npcId;
-    public string reward;
+    public Reward reward;
+    public string questType;
+    public int countEnd;
+    public ItemData questItem;
+    public bool isComplete;
+    public bool condition;
 }

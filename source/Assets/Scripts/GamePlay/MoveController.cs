@@ -14,7 +14,6 @@ public class MoveController : MonoBehaviour
     private Animator anim;
     private PlayerManager playerManager;
     [SerializeField]
-    private float moveLimit = 2f;
     public Transform Spot;
     public LayerMask layerMask;
     

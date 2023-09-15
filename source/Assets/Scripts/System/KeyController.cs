@@ -88,7 +88,6 @@ public class KeyController : MonoBehaviour
         // H - QUEST INTERACTION    
         if (Input.GetKeyDown(KeyCode.H))
         {
-            questManager.GetQuestIndex();
             questManager.AddQuest();
         }
 

@@ -13,6 +13,7 @@ public class TalkManager : MonoBehaviour
     public Talk talk;
     public int talkIndex = 0;
     private UIManager uiManager;
+    public bool isTalking;
 
     void Start()
     {
@@ -34,9 +35,17 @@ public class TalkManager : MonoBehaviour
 
     public void Talking()
     {
+        isTalking = true;
         uiManager.PrintDialog(talk.line[talkIndex]);
         Debug.Log(talk.line[talkIndex]);
         talkIndex++;
-        if (talkIndex == talk.talkIndex) talkIndex = 0;
+        if (talkIndex == talk.talkIndex)
+        {
+            talkIndex = 0;
+            // 퀘스트가 존재하는 Npc면 퀘스트 받을지 말지 고르기 받는 함수는 AddQuest함수 사용
+            isTalking = false;
+            // 대화 UI창 끄기
+            
+        }
     }
 }

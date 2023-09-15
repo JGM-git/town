@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Cristiano Ronaldo
   npcId: 7
-  reward: SIUUU
+  reward: {fileID: 0}
+  questType: NpcTalk
+  countEnd: 1
+  questItem: {fileID: 0}
+  isComplete: 1
+  condition: 1
