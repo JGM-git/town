@@ -54,11 +54,15 @@ public class UIManager : MonoBehaviour
     public TMP_Text weightText;
     public int slotPerLine = 7;
     public GameObject[] slotArr;
+    [Header("Dialog")]
+    public GameObject Dialog;
+    public TMP_Text DialogText;
+    public GameObject NextButton;
+    public GameObject AcceptButton;
+    public GameObject RejectButton;
     [Header("ETC")]
     public Slider StaminaSlider;
     public GameObject CarSpeedText;
-    public GameObject Dialog;
-    public TMP_Text DialogText;
 
     public Image StaminaImage;
     public GameObject QuitPanel;
@@ -68,6 +72,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private GameManager gameManager;
     private PlayerManager playerManager;
+    private QuestManager questManager;
     private Inventory inven;
 
     public bool infoOpened = false;
@@ -101,6 +106,7 @@ public class UIManager : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        questManager = FindObjectOfType<QuestManager>();
         inven = FindObjectOfType<Inventory>();
         RefreshMoney();
         RefreshTime();
@@ -346,6 +352,34 @@ public class UIManager : MonoBehaviour
         DialogText.DOText(target, 1f);
     }
 
+    public void LastDialog()
+    {
+        NextButton.SetActive(false);
+        AcceptButton.SetActive(true);
+        RejectButton.SetActive(true);
+    }
+
+    public void ResetDialog()
+    {
+        NextButton.SetActive(true);
+        AcceptButton.SetActive(false);
+        RejectButton.SetActive(false);
+        DialogText.text = "";
+    }
+
+    public void AcceptQuest()
+    {
+        questManager.AddQuest();
+        ResetDialog();
+        ManageDialog();
+    }
+
+    public void RejectQuest()
+    {
+        ResetDialog();
+        ManageDialog();
+    }
+    
     /// <summary>
     /// Achievements
     /// </summary>

@@ -41,6 +41,7 @@ public class TalkManager : MonoBehaviour
         talkIndex++;
         if (talkIndex == talk.talkIndex)
         {
+            uiManager.LastDialog();
             talkIndex = 0;
             // 퀘스트가 존재하는 Npc면 퀘스트 받을지 말지 고르기 받는 함수는 AddQuest함수 사용
             isTalking = false;

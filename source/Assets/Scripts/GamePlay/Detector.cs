@@ -52,7 +52,6 @@ public class Detector : MonoBehaviour
         if (detected.tag == "Npc")
         {
             detected.GetComponent<NpcManager>().TalkAction();
-            questManager.AddQuest();
             talkManager.GetTalk();
         }
 
