@@ -60,6 +60,13 @@ public class UIManager : MonoBehaviour
     public GameObject NextButton;
     public GameObject AcceptButton;
     public GameObject RejectButton;
+    [Header("Quest")]
+    public TMP_Text questCountText;
+    public Transform questContent;
+    public GameObject questPrefab;
+    public TMP_Text questTitleText;
+    public TMP_Text questDescriptionText;
+    public TMP_Text questRewardText;
     [Header("ETC")]
     public Slider StaminaSlider;
     public GameObject CarSpeedText;
@@ -184,6 +191,7 @@ public class UIManager : MonoBehaviour
         questOpened = !questOpened;
         if(questOpened)
         {
+            RefreshQuest();
             PanelOpenAnim(QuestPanel);
             windowStack.Push(ManageQuest);
         }
@@ -335,6 +343,40 @@ public class UIManager : MonoBehaviour
         ReputationText.text = playerManager.reputation.ToString();
         FaithText.text = playerManager.faith.ToString();
         LifeText.text = playerManager.life.ToString();
+    }
+
+    /// <summary>
+    /// QUEST
+    /// </summary>
+    
+    public void RefreshQuest()
+    {
+        questCountText.text = string.Format("{0} quests in progress", questManager.questList.Count);
+     
+        foreach (Transform child in questContent.transform)
+            Destroy(child.gameObject);
+        
+        foreach (Quest quest in questManager.questList)
+        {
+            GameObject questItem = Instantiate(questPrefab, questContent);
+            questItem.transform.SetParent(questContent);
+            questItem.GetComponent<Button>().onClick.AddListener(() =>
+                FindObjectOfType<QuestPanel>().ManagePanel(quest)
+                );
+            GetQuestTitleText(questItem).text = quest.questName;
+        }
+    }
+
+    public void SetPanelDetail(Quest quest)
+    {
+        questTitleText.text = quest.questName;
+        questDescriptionText.text = quest.description;
+        // questRewardText.text = 
+    }
+
+    private TMP_Text GetQuestTitleText(GameObject target)
+    {
+        return target.transform.GetChild(0).GetComponent<TMP_Text>();
     }
 
     /// <summary>

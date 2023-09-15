@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Quest1
   m_EditorClassIdentifier: 
   questName: Cristiano Ronaldo
+  description: "\uC628 \uC138\uC0C1\uC774 \uCD95\uC2E0\uB450\uB2E4. \uBA54\uC886\uC744
+    \uCCD0\uB0B4\uACE0 \uCD95\uC2E0\uB450\uB97C \uC6B0\uC8FC\uC758 \uC655\uC73C\uB85C
+    \uC138\uC6CC\uB77C."
   npcId: 7
   reward: {fileID: 0}
   questType: NpcTalk
@@ -20,4 +23,4 @@ MonoBehaviour:
   questItem: {fileID: 0}
   isComplete: 0
   condition: 0
-  onProgress: 0
+  onProgress: 1

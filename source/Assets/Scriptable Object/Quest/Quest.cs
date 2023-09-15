@@ -4,6 +4,7 @@ using UnityEngine;
 public class Quest : ScriptableObject
 {
     public string questName;
+    public string description;
     public int npcId;
     public Reward reward;
     public string questType;

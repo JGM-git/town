@@ -7,7 +7,7 @@ public class QuestManager : MonoBehaviour
 {
     public TalkManager talkManager;
     public NpcManager npcManager;
-    public Quest quest;
+    public List<Quest> questList;
     public int count;
     public Inventory invenTory;
     
@@ -17,31 +17,36 @@ public class QuestManager : MonoBehaviour
         npcManager = FindObjectOfType<NpcManager>();
         talkManager = FindObjectOfType<TalkManager>();
         invenTory = FindObjectOfType<Inventory>();
+
+        questList = new List<Quest>();
     }
 
     void Update()
     {
-        if (quest.questType == "GetItem")
+        foreach (Quest quest in questList)
         {
-            count = invenTory.inven[quest.questItem];
-        }
-        else if (quest.questType == "NpcTalk")
-        {
-            if (talkManager.isTalking == true && quest.npcId == npcManager.npcId)
+            if (quest.questType == "GetItem")
             {
-                quest.condition = true;
+                count = invenTory.inven[quest.questItem];
             }
-        }
+            else if (quest.questType == "NpcTalk")
+            {
+                if (talkManager.isTalking == true && quest.npcId == npcManager.npcId)
+                {
+                    quest.condition = true;
+                }
+            }
 
-        if (count >= quest.countEnd || quest.condition == true) quest.isComplete = true;
-        else quest.isComplete = false;
+            if (count >= quest.countEnd || quest.condition == true) quest.isComplete = true;
+            else quest.isComplete = false;
+        }
     }
 
     public void AddQuest()
-    {
-        quest = npcManager.quest;
+    {        
+        npcManager.quest.onProgress = true;
+        questList.Add(npcManager.quest);
         count = 0;
-        quest.onProgress = true;
     }
     
     public void CompleteQuest()
