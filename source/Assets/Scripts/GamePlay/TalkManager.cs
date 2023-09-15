@@ -20,17 +20,22 @@ public class TalkManager : MonoBehaviour
         npcManager = FindObjectOfType<NpcManager>();
         uiManager = FindObjectOfType<UIManager>();
     }
-
-    public void GenerateData()
-    {
-
-    }
+    
 
     public void GetTalk()
     {
-        talk = npcManager.talk;
-        uiManager.ManageDialog();
-        Talking();
+        if (npcManager.quest.onProgress == true)
+        {
+            talk = npcManager.questTalk;
+            uiManager.ManageDialog();
+            Talking();
+        }
+        else
+        {
+            talk = npcManager.talk;
+            uiManager.ManageDialog();
+            Talking();
+        }
     }
 
     public void Talking()
@@ -41,10 +46,10 @@ public class TalkManager : MonoBehaviour
         talkIndex++;
         if (talkIndex == talk.talkIndex)
         {
+            isTalking = false;
             uiManager.LastDialog();
             talkIndex = 0;
             // 퀘스트가 존재하는 Npc면 퀘스트 받을지 말지 고르기 받는 함수는 AddQuest함수 사용
-            isTalking = false;
             // 대화 UI창 끄기
             
         }

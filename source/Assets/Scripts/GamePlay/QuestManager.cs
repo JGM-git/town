@@ -41,12 +41,9 @@ public class QuestManager : MonoBehaviour
     {
         quest = npcManager.quest;
         count = 0;
+        quest.onProgress = true;
     }
-
-    public void QuestPlus()
-    {
-
-    }
+    
     public void CompleteQuest()
     {
         

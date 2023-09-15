@@ -11,6 +11,7 @@ public class NpcManager : MonoBehaviour
     public int questId;
     public Quest quest;
     public Talk talk;
+    public Talk questTalk;
     void Start()
     {
         anim = GetComponent<Animator>();

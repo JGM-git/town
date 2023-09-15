@@ -11,4 +11,5 @@ public class Quest : ScriptableObject
     public ItemData questItem;
     public bool isComplete;
     public bool condition;
+    public bool onProgress;
 }
