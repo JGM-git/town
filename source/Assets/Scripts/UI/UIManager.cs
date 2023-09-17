@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
     public RectTransform slotRect;
     public GameObject slotPrefab;
     public TMP_Text weightText;
+    public GameObject WarningIcon;
     public int slotPerLine = 7;
     public GameObject[] slotArr;
     [Header("Dialog")]
@@ -475,7 +476,10 @@ public class UIManager : MonoBehaviour
             if(i < invenKeys.Count)
                 inven.GenerateIcon(invenKeys[i], slotArr[i]);
         }
-        weightText.text = string.Format("Weight {0}%", Math.Round(playerManager.GetWeightPercent(), 2));
+
+        float weightPercent = playerManager.GetWeightPercent();
+        WarningIcon.SetActive(weightPercent > 90f);
+        weightText.text = string.Format("Weight {0}%", Math.Round(weightPercent, 2));
     }
 
     public void ResizeInven()

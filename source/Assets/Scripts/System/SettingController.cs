@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Windows.Forms;
+using Michsky.MUIP;
 using Application = UnityEngine.Application;
 using Screen = UnityEngine.Screen;
 
@@ -19,9 +20,10 @@ public class SettingController : MonoBehaviour
     /// VARIABLES
     /// </summary>
     private string dataPath;
+    public Sprite resolutionIcon;
     public Setting currentSetting;
     private Resolution[] resolutions;
-    public Dropdown resolutionDropdown;
+    public CustomDropdown resolutionDropdown;
 
     /// <summary>
     /// EVENT FUNCTIONS
@@ -39,16 +41,21 @@ public class SettingController : MonoBehaviour
 
     public void InitResolution()
     {
+        resolutionDropdown.items.Clear();
+        
         resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
         foreach (Resolution resolution in resolutions)
         {
             string option = resolution.width + " x " + resolution.height;
-            resolutionDropdown.options.Add(new Dropdown.OptionData(option));
+            resolutionDropdown.CreateNewItem(option, resolutionIcon, true);
         }
+        
         int currentResolutionIndex = GetCurrentResolutionIndex();
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        if (currentResolutionIndex != -1)
+        {
+            resolutionDropdown.selectedItemIndex = currentResolutionIndex;
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, Screen.fullScreen);
+        }
     }
     
     private int GetCurrentResolutionIndex()
@@ -62,6 +69,12 @@ public class SettingController : MonoBehaviour
             }
         }
         return -1;
+    }
+
+    public void SetGameResolution()
+    {
+        Resolution target = resolutionDropdown.GetCurrentResolutionFromItem();
+        Screen.SetResolution(target.width, target.height, Screen.fullScreen);
     }
     
     /// <summary>

@@ -246,6 +246,16 @@ namespace Michsky.MUIP
             if (enableTrigger == true && outOnPointerExit == true) { triggerObject.SetActive(false); }
         }
 
+        public Resolution GetCurrentResolutionFromItem()
+        {
+            string[] parts = items[selectedItemIndex].itemName.Split('x');
+            return new Resolution
+            {
+                width = int.Parse(parts[0]),
+                height = int.Parse(parts[1])
+            };
+        }
+
         public void Interactable(bool value)
         {
             isInteractable = value;
